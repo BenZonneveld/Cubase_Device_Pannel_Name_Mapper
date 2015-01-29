@@ -9,15 +9,6 @@
 #include "midi.h"
 #include "MIDIDevsDlg.h"
 
-// XML Templates:
-#include "Devices/xml_Proteus.h"
-#include "Devices/xml_DX7.h"
-#include "Devices/xml_Wavestation.h"
-#include "Devices/xml_MWXT.h"
-#include "Devices/xml_Spx990.h"
-#include "Devices/xml_DpPro.h"
-#include "Devices/xml_StudioQuad.h"
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -264,15 +255,6 @@ BOOL CDemoDlg::OnInitDialog()
 
 	// For reading the xml templates:
 	m_hInstance = theApp.m_hInstance;
-
-	// Fill the xml templates
-	memcpy(m_proteus_template,		proteus_template,				sizeof(proteus_template));
-	memcpy(m_dx7_template,				dx7_template,						sizeof(dx7_template));
-	memcpy(m_wavestation_template, wavestation_template,	sizeof(wavestation_template));
-	memcpy(m_microwave_template,	microwave_template,			sizeof(microwave_template));
-	memcpy(m_spx_template,				spx_template,						sizeof(spx_template));
-	memcpy(m_dppro_template,			dppro_template,					sizeof(dppro_template));
-	memcpy(m_studioquad_template,	studioquad_template,		sizeof(studioquad_template));
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }

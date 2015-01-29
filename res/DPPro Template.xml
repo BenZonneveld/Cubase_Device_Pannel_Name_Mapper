@@ -18,7 +18,7 @@
                   <item value="AB9705CD467B4D7A946C8860C504F492"/>
                   <item value="CA1729D088FC4857937F78CC37D45B48"/>
                </list>
-               <int name="DefChannel" value="15"/>
+               <int name="DefChannel" value="0"/>
                <int name="NumberParameters" value="2"/>
                <list name="Parameters" type="obj">
                   <obj class="PSubMidiParameter" ID="332332112">

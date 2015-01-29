@@ -146,31 +146,24 @@ private:
 
 	unsigned char	SysXBuffer[256*1024];
 	// For Proteus
-	char m_proteus_template[1908][135];
 	char m_proteus_presets[128][18];
 
 	// For DX7
-	char m_dx7_template[6091][121];
 	char m_dx7_presets[10][32][15]; // 10 bank, 32 presets with a name of 11
 
 	// For Wavestation
-	char m_wavestation_template[4009][137];
 	char m_wavestation_presets[4][50][23]; // 4 bank, 50 presets with a name of 16
 
 	// For Microwave XT
-	char m_microwave_template[11035][137];
 	char m_microwave_presets[2][128][20]; // 2 bank, 128 presets with a name of 16
 
 	// For Spx990
-	char m_spx_template[1474][120];
 	char m_spx_presets[100][17];
 
 	// For DP Pro
-	char m_dppro_template[7216][121];
 	char m_dppro_presets[3][128][22]; // 3 banks, 128 presets
 
 	// For Studio Quad
-	char m_studioquad_template[3496][133];
 	char m_studioquad_presets[2][281][45]; // 2 banks, 100 user , 180 factory
 
 	TCHAR MyPath[MAX_PATH];

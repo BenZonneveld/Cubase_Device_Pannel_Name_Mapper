@@ -260,7 +260,13 @@ LANGUAGE LANG_DUTCH, SUBLANG_DUTCH
 // Xml_Template
 //
 
-IDR_XML_PROTEUS         Xml_Template            "res\\xml_temp.bin"
+IDR_XML_PROTEUS         Xml_Template            "res\\Proteus Template.xml"
+IDR_XML_MWXT            Xml_Template            "res\\MicrowaveXT Template.xml"
+IDR_XML_DX7             Xml_Template            "res\\DX7 Template.xml"
+IDR_XML_WAVESTATION     Xml_Template            "res\\Wavestation Template.xml"
+IDR_XML_DPPRO           Xml_Template            "res\\DPPro Template.xml"
+IDR_XML_SPX             Xml_Template            "res\\SPX990 Template.xml"
+IDR_XML_STUDIOQUAD      Xml_Template            "res\\StudioQuad Template.xml"
 #endif    // Dutch (Netherlands) resources
 /////////////////////////////////////////////////////////////////////////////
 
