@@ -1,0 +1,65 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MIDIDevDemo v2 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Les\LOCALS~1\Temp\RSP14.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/MIDIDevDemo v2.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Les\Desktop\MIDIDevDemo v2\DemoDlg.cpp"
+"C:\Documents and Settings\Les\Desktop\MIDIDevDemo v2\MIDIDevDemo v2.cpp"
+"C:\Documents and Settings\Les\Desktop\MIDIDevDemo v2\MIDIDevsDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Les\LOCALS~1\Temp\RSP14.tmp" 
+Creating temporary file "C:\DOCUME~1\Les\LOCALS~1\Temp\RSP15.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Les\Desktop\MIDIDevDemo v2\MIDIInDevice.cpp"
+"C:\Documents and Settings\Les\Desktop\MIDIDevDemo v2\MIDIOutDevice.cpp"
+"C:\Documents and Settings\Les\Desktop\MIDIDevDemo v2\PianoCtrl.cpp"
+"C:\Documents and Settings\Les\Desktop\MIDIDevDemo v2\PianoKeys.cpp"
+"C:\Documents and Settings\Les\Desktop\MIDIDevDemo v2\ShortMsg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Les\LOCALS~1\Temp\RSP15.tmp" 
+Creating temporary file "C:\DOCUME~1\Les\LOCALS~1\Temp\RSP16.tmp" with contents
+[
+winmm.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/MIDIDevDemo v2.pdb" /debug /machine:I386 /out:"Debug/MIDIDevDemo v2.exe" /pdbtype:sept 
+".\Debug\DemoDlg.obj"
+".\Debug\LongMsg.obj"
+".\Debug\MIDIDevDemo v2.obj"
+".\Debug\MIDIDevsDlg.obj"
+".\Debug\MIDIInDevice.obj"
+".\Debug\MIDIKeyboard.obj"
+".\Debug\MIDIOutDevice.obj"
+".\Debug\PianoCtrl.obj"
+".\Debug\PianoKeys.obj"
+".\Debug\ShortMsg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\MIDIDevDemo v2.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\Les\LOCALS~1\Temp\RSP16.tmp"
+<h3>Output Window</h3>
+Compiling...
+DemoDlg.cpp
+MIDIDevDemo v2.cpp
+MIDIDevsDlg.cpp
+Generating Code...
+Compiling...
+MIDIInDevice.cpp
+MIDIOutDevice.cpp
+PianoCtrl.cpp
+PianoKeys.cpp
+ShortMsg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+MIDIDevDemo v2.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,383 @@
+0000   Bardo Thodol     
+0001   DDL And LongVerb 
+0002   Bardo Thodol Velo
+0003  Delay & Reverb  Fb
+0004  Undefined 0:4
+0005  Undefined 0:5
+0006  Undefined 0:6
+0007  Undefined 0:7
+0008  Undefined 0:8
+0009  Undefined 0:9
+0010  Undefined 0:10
+0011  Undefined 0:11
+0012  Undefined 0:12
+0013  Undefined 0:13
+0014  Undefined 0:14
+0015  Undefined 0:15
+0016  Undefined 0:16
+0017  Undefined 0:17
+0018  Undefined 0:18
+0019  Undefined 0:19
+0020  Undefined 0:20
+0021  Undefined 0:21
+0022  Undefined 0:22
+0023  Undefined 0:23
+0024  Undefined 0:24
+0025  Undefined 0:25
+0026  Undefined 0:26
+0027  Undefined 0:27
+0028  Undefined 0:28
+0029  Undefined 0:29
+0030  Undefined 0:30
+0031  Undefined 0:31
+0032  Undefined 0:32
+0033  Undefined 0:33
+0034  Undefined 0:34
+0035  Undefined 0:35
+0036  Undefined 0:36
+0037  Undefined 0:37
+0038  Undefined 0:38
+0039  Undefined 0:39
+0040  Undefined 0:40
+0041  Undefined 0:41
+0042  Undefined 0:42
+0043  Undefined 0:43
+0044  Undefined 0:44
+0045  Undefined 0:45
+0046  Undefined 0:46
+0047  Undefined 0:47
+0048  Undefined 0:48
+0049  Undefined 0:49
+0050  Undefined 0:50
+0051  Undefined 0:51
+0052  Undefined 0:52
+0053  Undefined 0:53
+0054  Undefined 0:54
+0055  Undefined 0:55
+0056  Undefined 0:56
+0057  Undefined 0:57
+0058  Undefined 0:58
+0059  Undefined 0:59
+0060  Undefined 0:60
+0061  Undefined 0:61
+0062  Undefined 0:62
+0063  Undefined 0:63
+0064  Undefined 0:64
+0065  Undefined 0:65
+0066  Undefined 0:66
+0067  Undefined 0:67
+0068  Undefined 0:68
+0069  Undefined 0:69
+0070  Undefined 0:70
+0071  Undefined 0:71
+0072  Undefined 0:72
+0073  Undefined 0:73
+0074  Undefined 0:74
+0075  Undefined 0:75
+0076  Undefined 0:76
+0077  Undefined 0:77
+0078  Undefined 0:78
+0079  Undefined 0:79
+0080  Undefined 0:80
+0081  Undefined 0:81
+0082  Undefined 0:82
+0083  Undefined 0:83
+0084  Undefined 0:84
+0085  Undefined 0:85
+0086  Undefined 0:86
+0087  Undefined 0:87
+0088  Undefined 0:88
+0089  Undefined 0:89
+0090  Undefined 0:90
+0091  Undefined 0:91
+0092  Undefined 0:92
+0093  Undefined 0:93
+0094  Undefined 0:94
+0095  Undefined 0:95
+0096  Undefined 0:96
+0097  Undefined 0:97
+0098  Undefined 0:98
+0099  Undefined 0:99
+0100  Undefined 0:100
+0101  Undefined 0:101
+0102  Undefined 0:102
+0103  Undefined 0:103
+0104  Undefined 0:104
+0105  Undefined 0:105
+0106  Undefined 0:106
+0107  Undefined 0:107
+0108  Undefined 0:108
+0109  Undefined 0:109
+0110  Undefined 0:110
+0111  Undefined 0:111
+0112  Undefined 0:112
+0113  Undefined 0:113
+0114  Undefined 0:114
+0115  Undefined 0:115
+0116  Undefined 0:116
+0117  Undefined 0:117
+0118  Undefined 0:118
+0119  Undefined 0:119
+0120  Undefined 0:120
+0121  Undefined 0:121
+0122  Undefined 0:122
+0123  Undefined 0:123
+0124  Undefined 0:124
+0125  Undefined 0:125
+0126  Undefined 0:126
+0127  Undefined 0:127
+1000  Undefined 1:0
+1001  Undefined 1:1
+1002  Undefined 1:2
+1003  Undefined 1:3
+1004  Undefined 1:4
+1005  Undefined 1:5
+1006  Undefined 1:6
+1007  Undefined 1:7
+1008  Undefined 1:8
+1009  Undefined 1:9
+1010  Undefined 1:10
+1011  Undefined 1:11
+1012  Undefined 1:12
+1013  Undefined 1:13
+1014  Undefined 1:14
+1015  Undefined 1:15
+1016  Undefined 1:16
+1017  Undefined 1:17
+1018  Undefined 1:18
+1019  Undefined 1:19
+1020  Undefined 1:20
+1021  Undefined 1:21
+1022  Undefined 1:22
+1023  Undefined 1:23
+1024  Undefined 1:24
+1025  Undefined 1:25
+1026  Undefined 1:26
+1027  Undefined 1:27
+1028  Undefined 1:28
+1029  Undefined 1:29
+1030  Undefined 1:30
+1031  Undefined 1:31
+1032  Undefined 1:32
+1033  Undefined 1:33
+1034  Undefined 1:34
+1035  Undefined 1:35
+1036  Undefined 1:36
+1037  Undefined 1:37
+1038  Undefined 1:38
+1039  Undefined 1:39
+1040  Undefined 1:40
+1041  Undefined 1:41
+1042  Undefined 1:42
+1043  Undefined 1:43
+1044  Undefined 1:44
+1045  Undefined 1:45
+1046  Undefined 1:46
+1047  Undefined 1:47
+1048  Undefined 1:48
+1049  Undefined 1:49
+1050  Undefined 1:50
+1051  Undefined 1:51
+1052  Undefined 1:52
+1053  Undefined 1:53
+1054  Undefined 1:54
+1055  Undefined 1:55
+1056  Undefined 1:56
+1057  Undefined 1:57
+1058  Undefined 1:58
+1059  Undefined 1:59
+1060  Undefined 1:60
+1061  Undefined 1:61
+1062  Undefined 1:62
+1063  Undefined 1:63
+1064  Undefined 1:64
+1065  Undefined 1:65
+1066  Undefined 1:66
+1067  Undefined 1:67
+1068  Undefined 1:68
+1069  Undefined 1:69
+1070  Undefined 1:70
+1071  Undefined 1:71
+1072  Undefined 1:72
+1073  Undefined 1:73
+1074  Undefined 1:74
+1075  Undefined 1:75
+1076  Undefined 1:76
+1077  Undefined 1:77
+1078  Undefined 1:78
+1079  Undefined 1:79
+1080  Undefined 1:80
+1081  Undefined 1:81
+1082  Undefined 1:82
+1083  Undefined 1:83
+1084  Undefined 1:84
+1085  Undefined 1:85
+1086  Undefined 1:86
+1087  Undefined 1:87
+1088  Undefined 1:88
+1089  Undefined 1:89
+1090  Undefined 1:90
+1091  Undefined 1:91
+1092  Undefined 1:92
+1093  Undefined 1:93
+1094  Undefined 1:94
+1095  Undefined 1:95
+1096  Undefined 1:96
+1097  Undefined 1:97
+1098  Undefined 1:98
+1099  Undefined 1:99
+1100  Undefined 1:100
+1101  Undefined 1:101
+1102  Undefined 1:102
+1103  Undefined 1:103
+1104  Undefined 1:104
+1105  Undefined 1:105
+1106  Undefined 1:106
+1107  Undefined 1:107
+1108  Undefined 1:108
+1109  Undefined 1:109
+1110  Undefined 1:110
+1111  Undefined 1:111
+1112  Undefined 1:112
+1113  Undefined 1:113
+1114  Undefined 1:114
+1115  Undefined 1:115
+1116  Undefined 1:116
+1117  Undefined 1:117
+1118  Undefined 1:118
+1119  Undefined 1:119
+1120  Undefined 1:120
+1121  Undefined 1:121
+1122  Undefined 1:122
+1123  Undefined 1:123
+1124  Undefined 1:124
+1125  Undefined 1:125
+1126  Undefined 1:126
+1127  Undefined 1:127
+2000 DepTh oF SpaCe 
+2001 MaJestiC HaLL 
+2002 VerSa-VeNue 
+2003 VaRiAblE HaLL 
+2004 IntiMate Hall 
+2005 OpeninG NitE 
+2006 RoYal HaLL 
+2007 CaPacitY Hall 
+2008 VocaL HaLL 1 
+2009 ENSemble HaLL 
+2010 ThE SoLoiSt HaLL 
+2011 ConTourEd HaLL 
+2012 LEaD VoCaL PlaTe 
+2013 Group VoCal PlaTe 
+2014 UniQue PlaTe 
+2015 DruM KiT PlaTe 
+2016 ATTacK PlaTe 
+2017 StruMMing PlaTe 
+2018 PUMPED Up PlaTe 
+2019 SmaLL PlaTe 1 
+2020 LusciouS PlaTe 
+2021 Smooth TiZ PlaTe 
+2022 Large PlaTe 
+2023 NoN-LiN DruMs 
+2024 NoN-LiN VoCaLs 
+2025 BiG RooM 
+2026 MediuM RooM 
+2027 SmaLL RooM 
+2028 VerY SmaLL RooM 
+2029 HaRd WooD RooM 
+2030 StoNe WaLL RooM 
+2031 SofT WaLL RooM 
+2032 PUMPED Up RooM 
+2033 BroWn 224 ReVerB! 
+2034 SpaTial AmBiencE 
+2035 FamouS CathEdral 
+2036 RanD-o-TaP 
+2037 TraiN StAtioN 
+2038 ApoLLo 13 
+2039 BlooM STaR 
+2040 ThE BooMer 
+2041 Tap-TiMe ReVerb 
+2042 SuRReaL VocaLs 2 
+2043 LivE DruM SpaCe 
+2044 RaY-o-VerB 
+2045 StuDio DruMs 
+2046 BroWn 224 & SwirL 
+2047 PerCuSSion PlaTe 
+2048 SnAre VerB 
+2049 VintagE RooM 
+2050 CluB MoDeleR 
+2051 SpAtiaL DelaYs 
+2052 TaP-TemPo BouNce 
+2053 AnTiMatteR DelaYs 
+2054 ResoNanT DelaYs 
+2055 RandomiZed 
+2056 LusCiouS DelaYs 
+2057 TwEakY TaPs 
+2058 TimE ModuLatoR 
+2059 W i D e N inG TaPs 
+2060 LusH Multi-ChoRus 
+2061 Wild Multi-Chorus 
+2062 Shifted Chorus 
+2063 DiamonD ChoRus 
+2064 ParaMetriC ChoRuS 
+2065 Pretty Harmonizer 
+2066 Chordal Harmony 
+2067 EviL ScaRy HarMo 
+2068 HarMo-SynThesiS 
+2069 LosT SouLs HarMo 
+2070 PsychaDeliC FlanGe 
+2071 LiQuiD FlanGe 
+2072 RhYthM FlanGe 
+2073 MulTi-PhaSor 
+2074 LiQuiD PhaSor 
+2075 RhYthmiC PhaSor 
+2076 SloW TreMoLo 
+2077 GuiTaR TreMoLo 
+2078 Pad Chopper 
+2079 TemPo-PaNNeR 
+2080 Animated Random 
+2081 Flange-o-Pan 
+2082 ChaT-ShiFt 
+2083 Phasic-Chatter 
+2084 PsyKotic Chat 
+2085 RoTarY In SpacE 
+2086 DeeP Sea EcHo 
+2087 DDL and Reverb 
+2088 InStanT AntiQue 
+2089 TabLe RaDio 
+2090 AurAtOnEs 
+2091 tiny SpEaKerS 
+2092 Subwoofer 
+2093 AM TrAnsisToR 
+2094 Amp In A RooM 
+2095 LooP Mangler 
+2096 LooP CrUncHeR 
+2097 LooP GooP 
+2098 MoGriFieR 1 
+2099 MoGriFieR 2 
+2100 AuToHarP 
+2101 FlanG-oruS 
+2102 FlaSoR 
+2103 PhaSoSauRus 
+2104 PEQ & ComPresS 
+2105 PEQ & XpanD 
+2106 PEQ & DeEss 
+2107 Master EQ & Limit1
+2108 Master EQ & Limit2
+2109 Master EQ & Widen 
+2110 Mstr. De-Ess & LiM 
+2111 MaKe My MiX Loud
+2112 SloW ComPressoR 
+2113 GuitaR ComPressoR 
+2114 Swell Comppressor
+2115 FasT ComPressoR 
+2116 DruM SQuasheR 
+2117 SSL TyPe LiMiTeR 
+2118 OpTo LiMiTeR 
+2119 DyNamiC Integrator
+2120 WhaT DyNamics?
+2121 Limit & Sample
+2122 Loop-ReCord & EQ
+2123 Midi Pitch Fix [e4]
+2124 OctaVe EQ & GaTe
+2125 Dual-Mono Gates
+2126 MuNcheD CasSetTe
