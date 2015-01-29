@@ -10,39 +10,17 @@ void CDemoDlg::OnPrefProteusMidiDevices()
 
 void CDemoDlg::OnDoProteusPgmDump()
 {
-	char bunchofdata[5];
-	CString line;
-	HRSRC hResource = FindResource(m_hInstance, MAKEINTRESOURCE(IDR_XML_PROTEUS), "Xml_Template");
-
-	if (hResource)
+	
+	OPEN_TEMPLATE(m_hInstance, IDR_XML_PROTEUS)
+	string line;							
+	while(getline(Panel_Template, line))
 	{
-		HGLOBAL hLoadedResource = LoadResource(m_hInstance, hResource);
-    if (hLoadedResource)
-    {
-        LPVOID pLockedResource = LockResource(hLoadedResource);
-        if (pLockedResource)
-        {
-            DWORD dwResourceSize = SizeofResource(m_hInstance, hResource);
-            if (0 != dwResourceSize)
-            {
-							// Use pLockedResource and dwResourceSize however you want
-							istrstream Panel_Template(static_cast<char *>(pLockedResource));
-							string line;
-							
-							Panel_Template.rdbuf()->pubsetbuf(static_cast<char *>(pLockedResource), dwResourceSize);
-							
-							while(getline(Panel_Template, line))
-							{
-//							line.GetData
-								sprintf_s(bunchofdata, "5");
-							}
-            }
-        }
-    }
+// DO Some actual stuff on 'line'
 	}
+  CLOSE_TEMPLATE
 //	EnablePorts(PROTEUS_ID);
-//	DisableButtons();
-//	q_Thread = ::AfxBeginThread((AFX_THREADPROC)DoProteusPgmDump, this);
+	DisableButtons();
+	q_Thread = ::AfxBeginThread((AFX_THREADPROC)DoProteusPgmDump, this);
 }
 
 DWORD CDemoDlg::DoProteusPgmDump(LPVOID Parameter)

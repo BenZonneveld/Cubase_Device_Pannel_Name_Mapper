@@ -450,32 +450,19 @@ void CDemoDlg::DisablePorts()
 
 void CDemoDlg::DisableButtons()
 {
-	m_QUserPgms.EnableWindow(FALSE);
-	m_QMidi.EnableWindow(FALSE);
-	m_SpxPgms.EnableWindow(FALSE);
-	m_SpxMidi.EnableWindow(FALSE);
-	m_DPProPgms.EnableWindow(FALSE);
-	m_DPProMidi.EnableWindow(FALSE);
-	m_MWXTPgms.EnableWindow(FALSE);
-	m_MWXTMidi.EnableWindow(FALSE);
-	m_ProteusPgms.EnableWindow(FALSE);
-	m_ProteusMidi.EnableWindow(FALSE);
-	m_DX7Pgms.EnableWindow(FALSE);
-	m_DX7Midi.EnableWindow(FALSE);
-	m_WavestationPgms.EnableWindow(FALSE);
-	m_WavestationMidi.EnableWindow(FALSE);
-	m_QUserPgms.UpdateWindow();
-	m_SpxPgms.UpdateWindow();
-	m_SpxMidi.UpdateWindow();
-	m_DPProPgms.UpdateWindow();
-	m_DPProMidi.UpdateWindow();
-	m_MWXTPgms.UpdateWindow();
-	m_MWXTMidi.UpdateWindow();
-	m_ProteusPgms.UpdateWindow();
-	m_ProteusMidi.UpdateWindow();
-	m_DX7Pgms.UpdateWindow();
-	m_DX7Midi.UpdateWindow();
-	m_WavestationPgms.UpdateWindow();
-	m_WavestationMidi.UpdateWindow();
-
+	DISABLE_BUTTON(m_QUserPgms)
+	DISABLE_BUTTON(m_QMidi)
+	DISABLE_BUTTON(m_SpxPgms)
+	DISABLE_BUTTON(m_SpxMidi)
+	DISABLE_BUTTON(m_DPProPgms)
+	DISABLE_BUTTON(m_DPProMidi)
+	DISABLE_BUTTON(m_MWXTPgms)
+	DISABLE_BUTTON(m_MWXTMidi)
+	DISABLE_BUTTON(m_ProteusPgms)
+	DISABLE_BUTTON(m_ProteusMidi)
+	DISABLE_BUTTON(m_DX7Pgms)
+	DISABLE_BUTTON(m_DX7Midi)
+	DISABLE_BUTTON(m_WavestationPgms)
+	DISABLE_BUTTON(m_WavestationMidi)
 }
+

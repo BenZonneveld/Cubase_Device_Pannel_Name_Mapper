@@ -136,13 +136,11 @@ private:
 	void EnablePorts(int DevId);
 	void DisablePorts();
 	void DisableButtons(void);
-//	istrstream  m_Panel_Template;
 
 	void OnPrefMididevices(int DevId);
 	FILE *Pgm_File;
 	unsigned char m_dx_bank;
 	HANDLE ghWriteEvent;
-	HANDLE ghReceivedAll;
 
 	HINSTANCE m_hInstance;
 

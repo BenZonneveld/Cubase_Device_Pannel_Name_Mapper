@@ -49,7 +49,7 @@ void CDemoDlg::EnsoniqDPProSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp
 	char presetname[22];
 	int presetnmbr=0;
 	int count=0;
-	int pos=0;
+	unsigned int pos=0;
 	int bank=0;
 	if ( Msg[5] == 0x21 )
 	{
