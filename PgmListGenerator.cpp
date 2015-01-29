@@ -51,6 +51,7 @@ BOOL CDemoApp::InitInstance()
 
 
 	CDemoDlg dlg;
+	
 	m_pMainWnd = &dlg;
 	int nResponse = dlg.DoModal();
 	if (nResponse == IDOK)

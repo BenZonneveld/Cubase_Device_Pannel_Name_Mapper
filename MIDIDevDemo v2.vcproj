@@ -515,6 +515,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\macros.h"
+				>
+			</File>
+			<File
 				RelativePath="midi.h"
 				>
 			</File>
@@ -584,6 +588,10 @@
 			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
 			<File
+				RelativePath=".\res\bin00001.bin"
+				>
+			</File>
+			<File
 				RelativePath=".\res\PgmListGenerator.ico"
 				>
 			</File>
@@ -591,9 +599,29 @@
 				RelativePath=".\res\PgmListGenerator.rc2"
 				>
 			</File>
+			<File
+				RelativePath=".\res\text1.bin"
+				>
+			</File>
+			<File
+				RelativePath=".\res\text2.bin"
+				>
+			</File>
+			<File
+				RelativePath=".\res\xml_temp.bin"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath="\\chrome\music\DP Pro\Proteus Template.xml"
+			>
+		</File>
+		<File
+			RelativePath=".\Devices\Proteus Template.xml"
+			>
+		</File>
+		<File
+			RelativePath=".\res\Proteus Template.xml"
 			>
 		</File>
 		<File

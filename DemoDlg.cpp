@@ -24,7 +24,6 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-
 /////////////////////////////////////////////////////////////////////////////
 // CAboutDlg dialog used for App About
 
@@ -262,6 +261,9 @@ BOOL CDemoDlg::OnInitDialog()
 	m_DX7Midi.UpdateWindow();
 	m_WavestationPgms.UpdateWindow();
 	m_WavestationMidi.UpdateWindow();
+
+	// For reading the xml templates:
+	m_hInstance = theApp.m_hInstance;
 
 	// Fill the xml templates
 	memcpy(m_proteus_template,		proteus_template,				sizeof(proteus_template));

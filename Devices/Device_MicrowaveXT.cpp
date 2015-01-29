@@ -3,7 +3,6 @@
 
 void CDemoDlg::OnPrefMWXTMidiDevices()
 {
-//	int size=ARRAY_SIZE(m_microwave_template);
 	DisablePorts();
 	EnablePorts(MWXT_ID);
 	OnPrefMididevices(MWXT_ID);
