@@ -322,10 +322,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\escape_entities.cpp"
-				>
-			</File>
-			<File
 				RelativePath="LongMsg.cpp"
 				>
 				<FileConfiguration
