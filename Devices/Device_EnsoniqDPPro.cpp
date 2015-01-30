@@ -127,8 +127,7 @@ void CDemoDlg::EnsoniqDPProSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp
 	for ( count = 0 ; count < 127 ; count++ )
 	{
 		sprintf_s(this->m_dppro_presets[2][count],
-			"2%03d  %s", 
-			count,
+			"%s", 
 			dp_presetnames[count]);
 
 	}

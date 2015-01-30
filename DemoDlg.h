@@ -8,9 +8,6 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-//#include <string>
-//#include <iostream>
-//#include <strstream>
 #include "MIDIOutDevice.h"
 #include "MIDIInDevice.h"
 #include "Resource.h"
