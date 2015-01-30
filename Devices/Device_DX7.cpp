@@ -22,12 +22,14 @@ DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 	TCHAR NPath[MAX_PATH];	
 
 	int channel=0;
+	char comparestring[512];
+	unsigned char presetnmbr=0;
+	unsigned char bank;
 
-	sprintf_s(NPath,"%s\\DX7", pThis->MyPath);
+	sprintf_s(NPath,"%s\\Device Panels", pThis->MyPath);
 	::CreateDirectory(NPath,NULL);
 	SetCurrentDirectory(NPath);
 
-#define DX_MODE
 	// For Yamaha Mode
 	CHAR tMsg[5];
 	tMsg[0]=0xF0;
@@ -36,23 +38,8 @@ DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 	tMsg[3]=0x09; // Request Bulk Dump
 	tMsg[4]=0xF7;
 
-//	// For E!
-//#define E_MODE
-//	char tMsg[8];
-//	tMsg[0]=0xF0;
-//	tMsg[1]=0x12; // GMR ID
-//	tMsg[2]=channel; // Midi Channel
-//	tMsg[3]=0x00; // E! for 6 OP FM
-//	tMsg[4]=0x00;	// Module #
-//	tMsg[5]=0x00; // Bank 
-//	tMsg[6]=0x11;	// Request 32 Voices/Functions 
-//	tMsg[7]=0xF7;
-
-	fopen_s(&pThis->Pgm_File, "DX7 Pgms.txt", "w");
-
-#ifdef DX_MODE
 #define CHANNEL	0
-	for( int bank = 0 ; bank < 10 ; bank++)
+	for( bank = 0 ; bank < 10 ; bank++)
 	{
 		midi::CShortMsg BankMsg(midi::CONTROL_CHANGE, CHANNEL, 6, bank*13, 0);
 		midi::CShortMsg PgmChangeMsg(midi::PROGRAM_CHANGE, CHANNEL, 0, 0,0);
@@ -66,20 +53,39 @@ DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 		WaitForSingleObject(pThis->ghWriteEvent, INFINITE);
 		ResetEvent(pThis->ghWriteEvent);
 	}
-#else
-	for (int bank = 0 ; bank < 9 ; bank++)
-	{
-		tMsg[5]=bank;
-		pThis->m_dx_bank=bank;
 
-		// transmit sysex
-		midi::CLongMsg LongMsg(tMsg,sizeof(tMsg));
-		LongMsg.SendMsg(pThis->m_OutDevice);
-		WaitForSingleObject(pThis->ghWriteEvent, INFINITE);
-		ResetEvent(pThis->ghWriteEvent);
+	// Now create the device xml:
+	OPEN_TEMPLATE(pThis->m_hInstance, IDR_XML_DX7)
+	fopen_s(&pThis->Pgm_File, "DX7.xml", "w");
+
+	sprintf_s(comparestring,"<string name=\"Name\" value=\"Bank0 Preset 0");
+
+	char unsigned bank = 0;
+	string line;							
+	while(getline(Panel_Template, line))
+	{
+		if ( strstr(line.c_str(),
+								comparestring) == NULL )
+		{
+			fprintf_s(pThis->Pgm_File,"%s",line.c_str());
+		} else {
+			fprintf_s(pThis->Pgm_File, "                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\r\n",pThis->m_dx7_presets[bank][presetnmbr]);
+			
+			presetnmbr++;
+			if ( presetnmbr > 31 )
+			{
+				bank++;
+				presetnmbr = 0;
+			}
+			sprintf_s(comparestring,
+					"                     <string name=\"Name\" value=\"Bank%d Preset %d",
+					bank,
+					presetnmbr);
+		}
 	}
-#endif
 	fclose(pThis->Pgm_File);
+	CLOSE_TEMPLATE
+
 	EnableButtons();
 
 	SetCurrentDirectory(pThis->MyPath);
@@ -104,35 +110,11 @@ void CDemoDlg::YamahaDX7Sysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
 		}
 		presetname[i]=0x0;
 		presetnmbr++;
-		fprintf_s(Pgm_File, "%d.%02d  %s\n",m_dx_bank, presetnmbr, presetname);
-	}
-		
-	m_InDevice.ReleaseBuffer((LPSTR)&SysXBuffer,sizeof(SysXBuffer));
-	SetEvent(ghWriteEvent);
-}
+		sprintf_s(this->m_dx7_presets[m_dx_bank][presetnmbr-1],
+			"%2d  %s", 
+			presetnmbr,
+			presetname);
 
-void CDemoDlg::YamahaDX7ESysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
-{
-	midi::CLongMsg	LongMsg(Msg,BytesRecorded);
-	char presetname[11];
-	unsigned char bank=Msg[5];
-	// Byte 6 is 0x01 for bulk voice dump
-	int OFFSET=7;
-#define NAMEOFFSET	118
-	int presetnmbr=0;
-	int i;
-	char patchdata[257];
-
-	for (DWORD pos=OFFSET; pos < BytesRecorded ; pos=pos+256)
-	{
-		memcpy(patchdata,Msg+pos,256);
-		for (i=0; i < 10; i++)
-		{
-			presetname[i]=patchdata[0x7e+(2*i)]&&patchdata[0x7f+(2*i)];
-		}
-		presetname[i]=0x0;
-		presetnmbr++;
-		fprintf_s(Pgm_File, "%d.%3d  %s\n", bank, presetnmbr, presetname);
 	}
 		
 	m_InDevice.ReleaseBuffer((LPSTR)&SysXBuffer,sizeof(SysXBuffer));

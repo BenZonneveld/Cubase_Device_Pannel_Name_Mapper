@@ -560,27 +560,11 @@
 			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
 			<File
-				RelativePath=".\res\bin00001.bin"
-				>
-			</File>
-			<File
 				RelativePath=".\res\PgmListGenerator.ico"
 				>
 			</File>
 			<File
 				RelativePath=".\res\PgmListGenerator.rc2"
-				>
-			</File>
-			<File
-				RelativePath=".\res\text1.bin"
-				>
-			</File>
-			<File
-				RelativePath=".\res\text2.bin"
-				>
-			</File>
-			<File
-				RelativePath=".\res\xml_temp.bin"
 				>
 			</File>
 		</Filter>
@@ -597,7 +581,7 @@
 			>
 		</File>
 		<File
-			RelativePath="ReadMe.txt"
+			RelativePath=".\res\Proteus Template.xml"
 			>
 		</File>
 		<File

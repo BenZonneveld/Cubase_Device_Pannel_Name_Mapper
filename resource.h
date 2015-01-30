@@ -11,14 +11,13 @@
 #define IDR_MAIN_MENU                   129
 #define IDD_MIDI_DEVS_DLG               130
 #define IDR_ACCELERATOR1                133
-#define IDR_XML_PROTEUS                 143
 #define IDR_XML_MWXT                    144
 #define IDR_XML_DX7                     145
 #define IDR_XML_WAVESTATION             146
 #define IDR_XML_DPPRO                   147
 #define IDR_XML_SPX                     148
-#define IDR_XML_TEMPLATE1               149
 #define IDR_XML_STUDIOQUAD              149
+#define IDR_XML_PROTEUS                 152
 #define IDC_MIDI_KEYS                   1000
 #define IDC_MIDI_OUT_DEVS               1001
 #define IDC_MIDI_IN_DEVS                1002
@@ -45,7 +44,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        150
+#define _APS_NEXT_RESOURCE_VALUE        153
 #define _APS_NEXT_COMMAND_VALUE         32779
 #define _APS_NEXT_CONTROL_VALUE         1017
 #define _APS_NEXT_SYMED_VALUE           101

@@ -18,10 +18,13 @@ void CDemoDlg::OnDoMWXTPgmDump()
 
 DWORD CDemoDlg::DoMWXTPgmDump(LPVOID Parameter)
 {
-	CDemoDlg *pThis = reinterpret_cast<CDemoDlg *>(Parameter);
+	CDemoDlg *	pThis = reinterpret_cast<CDemoDlg *>(Parameter);
 
-	TCHAR NPath[MAX_PATH];	
-	sprintf_s(NPath,"%s\\Microwave XT", pThis->MyPath);
+	TCHAR NPath[MAX_PATH];
+	char comparestring[512];
+	unsigned char presetnmbr=0;
+	
+	sprintf_s(NPath,"%s\\Device Panels", pThis->MyPath);
 	::CreateDirectory(NPath,NULL);
 	SetCurrentDirectory(NPath);
 
@@ -40,15 +43,48 @@ DWORD CDemoDlg::DoMWXTPgmDump(LPVOID Parameter)
 	tMsg[7]=(tMsg[5]+tMsg[6])&0x7F;
 	tMsg[8]=0xF7;
 	
-	fopen_s(&pThis->Pgm_File, "MWXT Pgms.txt", "w");
-
 	// transmit sysex
 	midi::CLongMsg LongMsg(tMsg,sizeof(tMsg));
 	LongMsg.SendMsg(pThis->m_OutDevice);
 	WaitForSingleObject(pThis->ghWriteEvent, INFINITE);
 	ResetEvent(pThis->ghWriteEvent);
 
+	// Now create the device xml:
+	OPEN_TEMPLATE(pThis->m_hInstance, IDR_XML_MWXT)
+	fopen_s(&pThis->Pgm_File, "Microwave XT.xml", "w");
+
+	sprintf_s(comparestring,"<string name=\"Name\" value=\"A Preset 0");
+
+	char unsigned bank = 0;
+	char banklabel[2]="A";
+	string line;							
+	while(getline(Panel_Template, line))
+	{
+		if ( strstr(line.c_str(),
+								comparestring) == NULL )
+		{
+			fprintf_s(pThis->Pgm_File,"%s",line.c_str());
+		} else {
+			fprintf_s(pThis->Pgm_File,
+								"                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\r\n",
+								pThis->m_microwave_presets[bank][presetnmbr]);
+			
+			presetnmbr++;
+			if ( presetnmbr > 127 )
+			{
+				bank = 1;
+				presetnmbr = 0;
+				*banklabel='B';
+			}
+			sprintf_s(comparestring,
+					"                     <string name=\"Name\" value=\"%s Preset %d",
+					banklabel,
+					presetnmbr);
+		}
+	}
 	fclose(pThis->Pgm_File);
+	CLOSE_TEMPLATE
+
 	EnableButtons();
 
 	SetCurrentDirectory(pThis->MyPath);
@@ -61,7 +97,8 @@ void CDemoDlg::MWXTSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
 	char presetname[17];
 	int OFFSET=247;
 	int presetnmbr=1;
-	char bank[2]="A";
+	char unsigned bank=0;
+	char banklabel[2]="A";
 	DWORD pos=OFFSET;
 	int i;
 
@@ -72,12 +109,17 @@ void CDemoDlg::MWXTSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
 			presetname[i]=Msg[pos+i];
 		}
 		presetname[i]=0x0;
-		fprintf_s(Pgm_File, "%s%03d  %s\n", bank,presetnmbr, presetname);
+		sprintf_s(this->m_microwave_presets[bank][presetnmbr-1],
+							"%s%03d  %s\n",
+							banklabel,
+							presetnmbr,
+							presetname);
 		presetnmbr++;
 		if ( presetnmbr > 128 )
 		{
-			bank[0]='B';
+			bank=1;
 			presetnmbr=1;
+			*banklabel='B';
 		}
 		pos=pos+256;
 	}

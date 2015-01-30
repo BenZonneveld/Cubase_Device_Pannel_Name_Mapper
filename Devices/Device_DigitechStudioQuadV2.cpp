@@ -24,8 +24,11 @@ DWORD CDemoDlg::DoQuadUserPgmDump(LPVOID Parameter)
 {
 	CDemoDlg *pThis = (CDemoDlg *)Parameter;
 
-	TCHAR NPath[MAX_PATH];	
-	sprintf_s(NPath,"%s\\Studio Quad V2", pThis->MyPath);
+	TCHAR NPath[MAX_PATH];
+	char comparestring[512];
+	unsigned char presetnmbr=0;
+
+	sprintf_s(NPath,"%s\\Device Panels", pThis->MyPath);
 	::CreateDirectory(NPath,NULL);
 	SetCurrentDirectory(NPath);
    
@@ -48,14 +51,11 @@ DWORD CDemoDlg::DoQuadUserPgmDump(LPVOID Parameter)
 	tMsg[9]=0x00;
 	tMsg[11]=0xF7;
 	
-	fopen_s(&pThis->Pgm_File, "QuadV2 Pgms.txt", "w");
-
 	for ( pgm = 0 ; pgm <= MAX_USER ; pgm++)
 	{
 		// construct sysex
 		tMsg[10]=pgm;
 	
-		fprintf_s(pThis->Pgm_File,"User %03d  ", pgm+1);
 		// transmit sysex
 		midi::CLongMsg LongMsg(tMsg,sizeof(tMsg));
 		LongMsg.SendMsg(pThis->m_OutDevice);
@@ -63,12 +63,6 @@ DWORD CDemoDlg::DoQuadUserPgmDump(LPVOID Parameter)
 		ResetEvent(pThis->ghWriteEvent);
 	}
 
-	// Print the factory Presetnames
-	for ( pgm = 0 ; pgm < 180 ; pgm++ )
-	{
-		fprintf_s(pThis->Pgm_File,"%s\n", quad_presetnames[pgm]);
-	}
-	fclose(pThis->Pgm_File);
 	EnableButtons();
 
 	SetCurrentDirectory(pThis->MyPath);

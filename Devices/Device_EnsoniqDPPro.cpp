@@ -16,26 +16,67 @@ void CDemoDlg::OnDoDPProPgmDump()
 
 	q_Thread = ::AfxBeginThread((AFX_THREADPROC)DoDPProPgmDump, this);
 
-	MessageBox("On the DP Pro goto 'System', page 15, select type 'All RAM Presets' and press Enter on the DP Pro.", "Warning", 
-                MB_ICONWARNING | MB_OK);
+	MessageBox("On the DP Pro goto 'System', page 15, select type 'All RAM Presets' and press Enter on the DP Pro.", "The DP Pro requires manual action.", 
+                 MB_OK);
 }
 
 DWORD CDemoDlg::DoDPProPgmDump(LPVOID Parameter)
 {
 	CDemoDlg *pThis = reinterpret_cast<CDemoDlg *>(Parameter);
 
-	TCHAR NPath[MAX_PATH];	
-	sprintf_s(NPath,"%s\\DP Pro", pThis->MyPath);
+	TCHAR NPath[MAX_PATH];
+	char comparestring[512];
+	unsigned char presetnmbr=0;
+
+	sprintf_s(NPath,"%s\\Device Panels", pThis->MyPath);
 	::CreateDirectory(NPath,NULL);
 	SetCurrentDirectory(NPath);
-
-	fopen_s(&pThis->Pgm_File, "DPPro User Pgms.txt", "w");
 
 	// transmit sysex
 	WaitForSingleObject(pThis->ghWriteEvent, INFINITE);
 	ResetEvent(pThis->ghWriteEvent);
 
+	// Try closing the messagebox
+  CWnd* pWnd = FindWindow(NULL, "The DP Pro requires manual action.");
+   if(pWnd != NULL)
+   {
+     // Send close command to the message box window
+     ::PostMessage(pWnd->m_hWnd, WM_CLOSE, 0, 0);
+   }
+
+		// Now create the device xml:
+	OPEN_TEMPLATE(pThis->m_hInstance, IDR_XML_DPPRO)
+	fopen_s(&pThis->Pgm_File, "DP Pro.xml", "w");
+
+	sprintf_s(comparestring,"<string name=\"Name\" value=\"User1 Preset 0");
+
+	unsigned int bank = 0;
+	string line;							
+	while(getline(Panel_Template, line))
+	{
+		if ( strstr(line.c_str(),
+								comparestring) == NULL )
+		{
+			fprintf_s(pThis->Pgm_File,"%s",line.c_str());
+		} else {
+			fprintf_s(pThis->Pgm_File,
+								"                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\r\n",
+								pThis->m_dppro_presets[bank][presetnmbr]);
+			
+			presetnmbr++;
+			if ( presetnmbr > 127 )
+			{
+				bank++;
+				presetnmbr = 0;
+			}
+			sprintf_s(comparestring,
+					"                     <string name=\"Name\" value=\"%s Preset %d",
+					dpbankname[bank],
+					presetnmbr);
+		}
+	}
 	fclose(pThis->Pgm_File);
+	CLOSE_TEMPLATE
 	EnableButtons();
 
 	SetCurrentDirectory(pThis->MyPath);
@@ -67,7 +108,11 @@ void CDemoDlg::EnsoniqDPProSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp
 			presetname[count]=(Msg[(2*count)+pos]<<4) + Msg[(2*count)+pos+1];
 		}
 		presetname[count]=0x0;
-		fprintf_s(Pgm_File, "%d%03d  %s\n", bank,presetnmbr, presetname);
+		sprintf_s(this->m_dppro_presets[bank][presetnmbr],
+			"%d%03d  %s",
+			bank,
+			presetnmbr,
+			presetname);
 
 		++presetnmbr;
 		if ( presetnmbr > 127 )
@@ -81,7 +126,11 @@ void CDemoDlg::EnsoniqDPProSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp
 	// Print the factory Presetnames
 	for ( count = 0 ; count < 127 ; count++ )
 	{
-		fprintf_s(Pgm_File,"%s\n", dp_presetnames[count]);
+		sprintf_s(this->m_dppro_presets[2][count],
+			"2%03d  %s", 
+			count,
+			dp_presetnames[count]);
+
 	}
 
 	m_InDevice.ReleaseBuffer((LPSTR)&SysXBuffer,sizeof(SysXBuffer));

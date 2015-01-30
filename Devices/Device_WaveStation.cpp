@@ -23,7 +23,12 @@ DWORD CDemoDlg::DoWavestationPgmDump(LPVOID Parameter)
 
 	TCHAR NPath[MAX_PATH];	
 	unsigned char channel=0;
-	sprintf_s(NPath,"%s\\Wavestation", pThis->MyPath);
+	
+	char comparestring[512];
+	unsigned char presetnmbr=0;
+	unsigned char xml_presetnmbr=0;
+
+	sprintf_s(NPath,"%s\\Device Panels", pThis->MyPath);
 	::CreateDirectory(NPath,NULL);
 	SetCurrentDirectory(NPath);
 
@@ -36,8 +41,6 @@ DWORD CDemoDlg::DoWavestationPgmDump(LPVOID Parameter)
 	tMsg[5]=0x00; // Bank number (1-11)
 	tMsg[6]=0xF7;
 
-	fopen_s(&pThis->Pgm_File, "Wavestation Pgms.txt", "w");
-
 	for ( int bank=0; bank < 4 ; bank++)
 	{
 		tMsg[5]=bank;
@@ -49,7 +52,47 @@ DWORD CDemoDlg::DoWavestationPgmDump(LPVOID Parameter)
 		ResetEvent(pThis->ghWriteEvent);
 	}
 
+	// Now create the device xml:
+	OPEN_TEMPLATE(pThis->m_hInstance, IDR_XML_WAVESTATION)
+	fopen_s(&pThis->Pgm_File, "Wavestation.xml", "w");
+
+	sprintf_s(comparestring,"<string name=\"Name\" value=\"RAM1 Preset 0");
+
+	char unsigned bank = 0;
+	string line;							
+	while(getline(Panel_Template, line))
+	{
+		if ( strstr(line.c_str(),
+								comparestring) == NULL )
+		{
+			fprintf_s(pThis->Pgm_File,"%s",line.c_str());
+		} else {
+			fprintf_s(pThis->Pgm_File,
+								"                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\r\n",
+								pThis->m_wavestation_presets[bank][presetnmbr]);
+			
+			presetnmbr++;
+			if ( presetnmbr > 49 )
+			{
+				bank++;
+				presetnmbr = 0;
+			}
+			if ( presetnmbr > 99 )
+			{
+				xml_presetnmbr = 0;
+			} else {
+				xml_presetnmbr++;
+			}
+			sprintf_s(comparestring,
+								"                     <string name=\"Name\" value=\"%s Preset %d",
+								WavestationBankNames[bank],
+								xml_presetnmbr);
+
+		}
+	}
 	fclose(pThis->Pgm_File);
+	CLOSE_TEMPLATE
+
 	EnableButtons();
 
 	SetCurrentDirectory(pThis->MyPath);
@@ -84,13 +127,17 @@ void CDemoDlg::WavestationSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
 			memcpy(ptr,&Decoded,1);
 			ptr++;
 		}
-		fprintf_s(Pgm_File,
-							"%s %02d  %s\n",
-							WavestationBankNames[bank],
+
+		sprintf_s(this->m_wavestation_presets[bank][presetnmbr],
+							"%02d  %s\n",
 							presetnmbr,
 							PerfBank.Perf_Name);
 		presetnmbr++;
-
+		if ( presetnmbr > 49 )
+		{
+			presetnmbr = 0;
+			bank++;
+		}
 	}
 		
 	m_InDevice.ReleaseBuffer((LPSTR)&SysXBuffer,sizeof(SysXBuffer));

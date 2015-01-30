@@ -123,7 +123,6 @@ private:
 	// Sysex Receivers
 	void	DigitechQuadSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp);
 	void	YamahaDX7Sysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp);
-	void	YamahaDX7ESysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp);
 	void	YamahaSPXSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp);
 	void	EnsoniqDPProSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp);
 	void	MWXTSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp);
@@ -147,23 +146,11 @@ private:
 	unsigned char	SysXBuffer[256*1024];
 	// For Proteus
 	char m_proteus_presets[128][18];
-
-	// For DX7
 	char m_dx7_presets[10][32][15]; // 10 bank, 32 presets with a name of 11
-
-	// For Wavestation
-	char m_wavestation_presets[4][50][23]; // 4 bank, 50 presets with a name of 16
-
-	// For Microwave XT
-	char m_microwave_presets[2][128][20]; // 2 bank, 128 presets with a name of 16
-
-	// For Spx990
-	char m_spx_presets[100][17];
-
-	// For DP Pro
-	char m_dppro_presets[3][128][22]; // 3 banks, 128 presets
-
-	// For Studio Quad
+	char m_wavestation_presets[4][50][25]; // 4 bank, 50 presets with a name of 16
+	char m_microwave_presets[2][128][25]; // 2 bank, 128 presets with a name of 16
+	char m_spx_presets[100][25];
+	char m_dppro_presets[3][128][35]; // 3 banks, 128 presets
 	char m_studioquad_presets[2][281][45]; // 2 banks, 100 user , 180 factory
 
 	TCHAR MyPath[MAX_PATH];

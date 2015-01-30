@@ -15,7 +15,7 @@
                      <string name="DeviceNode Name" value="Channel 1" wide="true"/>
                      <string name="ClassName" value="MidiDeviceNode"/>
                      <string name="IDString" value="Channel 1"/>
-                     <int name="Selected Preset" value="64"/>
+                     <int name="Selected Preset" value="0"/>
                      <int name="NodeFlags" value="0"/>
                      <int name="NumberClassIDs" value="3"/>
                      <list name="ClassIDs" type="string">

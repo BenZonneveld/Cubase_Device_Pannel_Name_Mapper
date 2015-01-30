@@ -22,8 +22,11 @@ DWORD CDemoDlg::DoSpxUserPgmDump(LPVOID Parameter)
 {
 	CDemoDlg *pThis = reinterpret_cast<CDemoDlg *>(Parameter);
 
-	TCHAR NPath[MAX_PATH];	
-	sprintf_s(NPath,"%s\\SPX990", pThis->MyPath);
+	TCHAR NPath[MAX_PATH];
+	char comparestring[512];
+	unsigned char presetnmbr=0;
+
+	sprintf_s(NPath,"%s\\Device Panels", pThis->MyPath);
 	::CreateDirectory(NPath,NULL);
 	SetCurrentDirectory(NPath);
 
@@ -65,6 +68,37 @@ DWORD CDemoDlg::DoSpxUserPgmDump(LPVOID Parameter)
 	}
 
 	fclose(pThis->Pgm_File);
+	// Now create the device xml:
+	OPEN_TEMPLATE(pThis->m_hInstance, IDR_XML_SPX)
+
+	fopen_s(&pThis->Pgm_File, "spx.xml", "w");
+
+	sprintf_s(comparestring,"<string name=\"Name\" value=\"Preset 0");
+
+	string line;							
+	while(getline(Panel_Template, line))
+	{
+		if ( strstr(line.c_str(),
+								comparestring) == NULL )
+		{
+			fprintf_s(pThis->Pgm_File,"%s",line.c_str());
+		} else {
+			fprintf_s(pThis->Pgm_File,
+				"                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\n",
+				pThis->m_spx_presets[presetnmbr]);
+			
+			presetnmbr++;
+			if ( presetnmbr < 128 )
+			{
+				sprintf_s(comparestring,
+					"                     <string name=\"Name\" value=\"Preset %d",
+					presetnmbr);
+			}
+		}
+	}
+
+	fclose(pThis->Pgm_File);
+	CLOSE_TEMPLATE
 	EnableButtons();
 
 	SetCurrentDirectory(pThis->MyPath);
@@ -84,6 +118,11 @@ void CDemoDlg::YamahaSPXSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
 		count++;
 	}	
 	PgmName[count]=0x00;
+	sprintf_s(this->m_spx_presets[Msg[15]],
+			"%2d  %s", 
+			Msg[15],
+			PgmName);
+
 	fprintf_s(Pgm_File, "%s\n", PgmName);
 	m_InDevice.ReleaseBuffer((LPSTR)&SysXBuffer,sizeof(SysXBuffer));
 	SetEvent(ghWriteEvent);

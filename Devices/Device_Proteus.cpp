@@ -10,13 +10,6 @@ void CDemoDlg::OnPrefProteusMidiDevices()
 
 void CDemoDlg::OnDoProteusPgmDump()
 {
-//	OPEN_TEMPLATE(m_hInstance, IDR_XML_PROTEUS)
-//	string line;							
-//	while(getline(Panel_Template, line))
-//	{
-// DO Some actual stuff on 'line'
-//	}
-//  CLOSE_TEMPLATE
 	EnablePorts(PROTEUS_ID);
 	DisableButtons();
 	q_Thread = ::AfxBeginThread((AFX_THREADPROC)DoProteusPgmDump, this);
@@ -31,7 +24,7 @@ DWORD CDemoDlg::DoProteusPgmDump(LPVOID Parameter)
 
 	char comparestring[512];
 	unsigned char presetnmbr=0;
-	sprintf_s(NPath,"%s\\Proteus_1", pThis->MyPath);
+	sprintf_s(NPath,"%s\\Device Panels", pThis->MyPath);
 	::CreateDirectory(NPath,NULL);
 	SetCurrentDirectory(NPath);
 
@@ -49,8 +42,6 @@ DWORD CDemoDlg::DoProteusPgmDump(LPVOID Parameter)
 	tMsg[6]=0x00;	// Preset Number msb
 	tMsg[7]=0xF7;
 	
-	fopen_s(&pThis->Pgm_File, "Proteus Pgms.txt", "w");
-
 	for (int count =0 ; count < 191 ; count++)
 	{
 		tMsg[5]=count&0x7F;
@@ -63,8 +54,6 @@ DWORD CDemoDlg::DoProteusPgmDump(LPVOID Parameter)
 		ResetEvent(pThis->ghWriteEvent);
 	}
 
-	fclose(pThis->Pgm_File);
-
 	// Now create the device xml:
 	OPEN_TEMPLATE(pThis->m_hInstance, IDR_XML_PROTEUS)
 
@@ -72,22 +61,24 @@ DWORD CDemoDlg::DoProteusPgmDump(LPVOID Parameter)
 
 	sprintf_s(comparestring,"<string name=\"Name\" value=\"Preset 0");
 
-//	for ( int count = 0 ; count < ARRAY_SIZE(pThis->m_proteus_template) ; count++)
 	string line;							
 	while(getline(Panel_Template, line))
 	{
-//<string name=\"Name\" value=\"Preset
 		if ( strstr(line.c_str(),
 								comparestring) == NULL )
 		{
 			fprintf_s(pThis->Pgm_File,"%s",line.c_str());
 		} else {
-			fprintf_s(pThis->Pgm_File, "                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\n",pThis->m_proteus_presets[presetnmbr]);
+			fprintf_s(pThis->Pgm_File,
+				"                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\n",
+				pThis->m_proteus_presets[presetnmbr]);
 			
 			presetnmbr++;
 			if ( presetnmbr < 128 )
 			{
-				sprintf_s(comparestring,"                     <string name=\"Name\" value=\"Preset %d",presetnmbr);
+				sprintf_s(comparestring,
+					"                     <string name=\"Name\" value=\"Preset %d",
+					presetnmbr);
 			}
 		}
 	}
@@ -117,10 +108,12 @@ void CDemoDlg::ProteusSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
 	presetname[i]=0x0;
 	if ( presetnmbr > 128 )
 	{
-		fprintf_s(Pgm_File, "x%3d  %s\n",presetnmbr, presetname);
+		;//fprintf_s(Pgm_File, "x%3d  %s\r\n",presetnmbr, presetname);
 	} else {
-		sprintf_s(this->m_proteus_presets[presetnmbr-1],"%3d  %s", presetnmbr, presetname);
-		fprintf_s(Pgm_File, "%3d  %s\n",presetnmbr, presetname);
+		sprintf_s(this->m_proteus_presets[presetnmbr-1],
+			"%3d  %s", 
+			presetnmbr,
+			presetname);
 	}
 	m_InDevice.ReleaseBuffer((LPSTR)&SysXBuffer,sizeof(SysXBuffer));
 	SetEvent(ghWriteEvent);

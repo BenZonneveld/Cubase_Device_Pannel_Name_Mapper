@@ -127,3 +127,9 @@ char dp_presetnames[128][25]={
 "2125 Dual-Mono Gates",
 "2126 MuNcheD CasSetTe",
 "2127 Tone Generator!" };
+
+char dpbankname[4][10]={
+	"User1",
+	"User2",
+	"Factory",
+	"Template"};

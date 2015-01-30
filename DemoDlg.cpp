@@ -119,9 +119,9 @@ void CDemoDlg::ReceiveMsg(LPSTR Msg, DWORD BytesRecorded,DWORD TimeStamp)
 		case 0x0F:	// Ensoniq Corp.
 			EnsoniqDPProSysex( Msg, BytesRecorded, TimeStamp);
 			break;
-		case 0x12:  // GMR ID
-			YamahaDX7ESysex( Msg, BytesRecorded, TimeStamp);
-			break;
+//		case 0x12:  // GMR ID
+//			YamahaDX7ESysex( Msg, BytesRecorded, TimeStamp);
+//			break;
 		case 0x18:	// EMU
 			ProteusSysex( Msg, BytesRecorded, TimeStamp);
 			break;
@@ -147,6 +147,7 @@ void CDemoDlg::ReceiveMsg(LPSTR Msg, DWORD BytesRecorded,DWORD TimeStamp)
 		default:
 			break;
 	}
+	m_InDevice.ReleaseBuffer((LPSTR)&SysXBuffer,sizeof(SysXBuffer));
 }
 
 

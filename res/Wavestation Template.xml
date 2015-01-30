@@ -4,7 +4,7 @@
       <obj class="PMidiParameterDevice" ID="245211496">
          <string name="DeviceNode Name" value="Wavestation EX" wide="true"/>
          <string name="ClassName" value="Midi Device"/>
-         <string name="IDString" value="Wavestation EX 2"/>
+         <string name="IDString" value="Wavestation EX"/>
          <list name="Children" type="obj">
             <obj class="PMidiDeviceNode" ID="335903560">
                <string name="DeviceNode Name" value="Wavestation EX" wide="true"/>
