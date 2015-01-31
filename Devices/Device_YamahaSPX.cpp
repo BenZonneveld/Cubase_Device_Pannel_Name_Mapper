@@ -14,14 +14,16 @@ void CDemoDlg::OnDoSpxPgmDump()
 {
 	EnablePorts(SPX_ID);
 	DisableButtons();
-
+	m_Abort = false;
+	ResetEvent(ghWriteEvent);
+	m_ProgressBar.SetStep(MAXBAR/100);
 	q_Thread = ::AfxBeginThread((AFX_THREADPROC)DoSpxUserPgmDump, this);
 }
 
 DWORD CDemoDlg::DoSpxUserPgmDump(LPVOID Parameter)
 {
 	CDemoDlg *pThis = reinterpret_cast<CDemoDlg *>(Parameter);
-
+	FILE *Device_Xml_File;
 	TCHAR NPath[MAX_PATH];
 	char comparestring[512];
 	unsigned char presetnmbr=0;
@@ -51,27 +53,27 @@ DWORD CDemoDlg::DoSpxUserPgmDump(LPVOID Parameter)
 //	tMsg[13]=0x;
 	tMsg[14]=0xF7;
 	
-	fopen_s(&pThis->Pgm_File, "Spx User Pgms.txt", "w");
-
 	// transmit sysex
 	for ( int pgm = 1 ; pgm <= MaxPreset ; pgm++)
 	{
 		// construct sysex
 		tMsg[13]=pgm;
 	
-		fprintf_s(pThis->Pgm_File,"%03d  ", pgm);
 		// transmit sysex
 		midi::CLongMsg LongMsg(tMsg,sizeof(tMsg));
 		LongMsg.SendMsg(pThis->m_OutDevice);
 		WaitForSingleObject(pThis->ghWriteEvent, INFINITE);
+		if (pThis->m_Abort == true )
+			goto abort;
+
 		ResetEvent(pThis->ghWriteEvent);
+		pThis->m_ProgressBar.StepIt();
 	}
 
-	fclose(pThis->Pgm_File);
 	// Now create the device xml:
 	OPEN_TEMPLATE(pThis->m_hInstance, IDR_XML_SPX)
 
-	fopen_s(&pThis->Pgm_File, "spx.xml", "w");
+	fopen_s(&Device_Xml_File, "SPX990.xml", "wb");
 
 	sprintf_s(comparestring,"<string name=\"Name\" value=\"Preset 0");
 
@@ -81,10 +83,15 @@ DWORD CDemoDlg::DoSpxUserPgmDump(LPVOID Parameter)
 		if ( strstr(line.c_str(),
 								comparestring) == NULL )
 		{
-			fprintf_s(pThis->Pgm_File,"%s",line.c_str());
+			fprintf_s(Device_Xml_File,"%s",line.c_str());
+			if ( strstr(line.c_str(),
+									"</MidiDevices>") != NULL )
+			{
+									break;
+			}
 		} else {
-			fprintf_s(pThis->Pgm_File,
-				"                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\n",
+			fprintf_s(Device_Xml_File,
+				"                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\r\n",
 				pThis->m_spx_presets[presetnmbr]);
 			
 			presetnmbr++;
@@ -97,10 +104,11 @@ DWORD CDemoDlg::DoSpxUserPgmDump(LPVOID Parameter)
 		}
 	}
 
-	fclose(pThis->Pgm_File);
+	fclose(Device_Xml_File);
 	CLOSE_TEMPLATE
+abort:
 	EnableButtons();
-
+	pThis->m_ProgressBar.SetPos(0);
 	SetCurrentDirectory(pThis->MyPath);
 	return 0;
 }
@@ -118,12 +126,11 @@ void CDemoDlg::YamahaSPXSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
 		count++;
 	}	
 	PgmName[count]=0x00;
-	sprintf_s(this->m_spx_presets[Msg[15]],
+	sprintf_s(this->m_spx_presets[Msg[15]-1],
 			"%2d  %s", 
 			Msg[15],
 			PgmName);
 
-	fprintf_s(Pgm_File, "%s\n", PgmName);
 	m_InDevice.ReleaseBuffer((LPSTR)&SysXBuffer,sizeof(SysXBuffer));
 	SetEvent(ghWriteEvent);
 }

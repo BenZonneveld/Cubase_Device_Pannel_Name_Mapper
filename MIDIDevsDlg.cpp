@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "PgmListGenerator.h"
+#include "Cubase Device Panel Mapper.h"
 #include "MIDIDevsDlg.h"
 #include "MIDIOutDevice.h"
 #include "MIDIInDevice.h"
@@ -58,7 +58,7 @@ BOOL CMIDIDevsDlg::OnInitDialog()
     //
 	
     UINT i;
-	MIDIOUTCAPS OutCaps;
+		MIDIOUTCAPS OutCaps;
     for(i = 0; i < midi::CMIDIOutDevice::GetNumDevs(); i++)
     {
         midi::CMIDIOutDevice::GetDevCaps(i, OutCaps);

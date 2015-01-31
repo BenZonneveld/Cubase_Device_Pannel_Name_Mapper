@@ -15,6 +15,7 @@
 #include "ShortMsg.h"
 #include "midi.h"
 
+#define MAXBAR					200
 #define DIGITECH_ID			0
 #define SPX_ID					1
 #define DPPRO_ID				2
@@ -50,20 +51,21 @@ public:
 // Dialog Data
 	//{{AFX_DATA(CDemoDlg)
 	enum { IDD = IDD_MIDIDEVDEMOV2_DIALOG };
-    CButton   m_QUserPgms;
-		CButton		m_QMidi;
-		CButton		m_SpxPgms;
-		CButton		m_SpxMidi;
-		CButton		m_DPProPgms;
-		CButton		m_DPProMidi;
-		CButton		m_MWXTPgms;
-		CButton		m_MWXTMidi;
-		CButton		m_ProteusPgms;
-		CButton		m_ProteusMidi;
-		CButton		m_DX7Pgms;
-		CButton		m_DX7Midi;
-		CButton		m_WavestationPgms;
-		CButton		m_WavestationMidi;
+    CButton				m_QUserPgms;
+		CButton				m_QMidi;
+		CButton				m_SpxPgms;
+		CButton				m_SpxMidi;
+		CButton				m_DPProPgms;
+		CButton				m_DPProMidi;
+		CButton				m_MWXTPgms;
+		CButton				m_MWXTMidi;
+		CButton				m_ProteusPgms;
+		CButton				m_ProteusMidi;
+		CButton				m_DX7Pgms;
+		CButton				m_DX7Midi;
+		CButton				m_WavestationPgms;
+		CButton				m_WavestationMidi;
+		CProgressCtrl	m_ProgressBar;
 
 	//}}AFX_DATA
 
@@ -82,6 +84,7 @@ protected:
 	// Generated message map functions
 	//{{AFX_MSG(CDemoDlg)
 	virtual BOOL OnInitDialog();
+	BOOL PreTranslateMessage(MSG* pMsg);
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
@@ -127,16 +130,20 @@ private:
 	void	WavestationSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp);
 	void	ProteusSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp);
 
-	void	CreateDeviceXML(LPSTR filename, char *xml_template, char *presetnames);
+//	void	CreateDeviceXML(LPSTR filename, char *xml_template, char *presetnames);
 	// Global Stuff
 	void EnablePorts(int DevId);
 	void DisablePorts();
 	void DisableButtons(void);
+	bool CheckDevicePorts(int DevId);
+	void MidiCheck(void);
 
 	void OnPrefMididevices(int DevId);
-	FILE *Pgm_File;
+
 	unsigned char m_dx_bank;
 	HANDLE ghWriteEvent;
+	bool m_Abort;
+	HACCEL m_hAccelTable;
 
 	HINSTANCE m_hInstance;
 
@@ -149,10 +156,10 @@ private:
 	char m_spx_presets[100][25];
 	char m_dppro_presets[3][128][35]; // 3 banks, 128 presets
 	char m_studioquad_presets[2][281][45]; // 2 banks, 100 user , 180 factory
-
+	char m_studioquad_presetnmbr;
+	
 	TCHAR MyPath[MAX_PATH];
 	CWinThread    *q_Thread;
-
 };
 
 

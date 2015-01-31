@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "PgmListGenerator.h"
+#include "Cubase Device Panel Mapper.h"
 #include "DemoDlg.h"
 #include "ShortMsg.h"
 #include "LongMsg.h"
@@ -177,7 +177,7 @@ void CDemoDlg::DoDataExchange(CDataExchange* pDX)
 		DDX_Control(pDX, IDC_WAVESTATION_GET_PGM, m_WavestationPgms);
 		DDX_Control(pDX, IDC_PROTEUS_MIDI, m_ProteusMidi);
 		DDX_Control(pDX, IDC_PROTEUS_GET_PGM, m_ProteusPgms);
-						
+		DDX_Control(pDX, IDC_PROGRESS, m_ProgressBar);
 	//}}AFX_DATA_MAP
 }
 
@@ -212,7 +212,6 @@ BOOL CDemoDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 //	THREADPARAMS *Params = new THREADPARAMS;
-	ghWriteEvent = CreateEvent(NULL,TRUE,FALSE,NULL);
 
 	GetCurrentDirectory(MAX_PATH, MyPath);
 
@@ -238,21 +237,22 @@ BOOL CDemoDlg::OnInitDialog()
 	//  when the application's main window is not a dialog
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
-	
-	m_QUserPgms.UpdateWindow();
+
 	m_QMidi.UpdateWindow();
-	m_SpxPgms.UpdateWindow();
 	m_SpxMidi.UpdateWindow();
-	m_DPProPgms.UpdateWindow();
 	m_DPProMidi.UpdateWindow();
-	m_MWXTPgms.UpdateWindow();
 	m_MWXTMidi.UpdateWindow();
-	m_ProteusPgms.UpdateWindow();
 	m_ProteusMidi.UpdateWindow();
-	m_DX7Pgms.UpdateWindow();
 	m_DX7Midi.UpdateWindow();
-	m_WavestationPgms.UpdateWindow();
 	m_WavestationMidi.UpdateWindow();
+	m_ProgressBar.SetRange(0, MAXBAR);
+	m_ProgressBar.SetStep(1);
+
+	MidiCheck();
+	m_hAccelTable = LoadAccelerators(AfxGetInstanceHandle(),
+    MAKEINTRESOURCE(IDR_ACCELERATOR));
+	
+	ghWriteEvent = CreateEvent(NULL,TRUE,FALSE,NULL);
 
 	// For reading the xml templates:
 	m_hInstance = theApp.m_hInstance;
@@ -319,7 +319,12 @@ void CDemoDlg::OnPrefMididevices(int DevId)
 		try
     {
 	    CMIDIDevsDlg Dlg;
-
+				
+			//if ( DevId == DPPRO_ID )
+			//{
+			//	Dlg.m_OutDevsCombo.EnableWindow(FALSE);
+			//	Dlg.m_OutDevsCombo.UpdateWindow();
+			//}
         //
         // Initialize MIDI device dialog box
         //
@@ -339,7 +344,7 @@ void CDemoDlg::OnPrefMididevices(int DevId)
         {
             // If the client clicked OK and they chose to change the 
             // MIDI output device
-            if(Dlg.IsOutDevChanged())
+//            if(Dlg.IsOutDevChanged())
             {
                 m_OutDevice.Close();
 								midi::CMIDIOutDevice::GetDevCaps(Dlg.GetOutDevId() , moutCaps);
@@ -349,7 +354,7 @@ void CDemoDlg::OnPrefMididevices(int DevId)
 
             // If the client clicked OK and they chose to change the 
             // MIDI input device
-            if(Dlg.IsInDevChanged())
+ //           if(Dlg.IsInDevChanged())
             {
 							sprintf_s(portname,"InPort_Dev_%d", DevId);
 
@@ -377,6 +382,7 @@ void CDemoDlg::OnPrefMididevices(int DevId)
     {
         MessageBox(ex.what(), "Error", MB_ICONSTOP | MB_OK);
     }
+		MidiCheck();
 }
 
 
@@ -389,8 +395,8 @@ void CDemoDlg::OnFileExit()
 void CDemoDlg::OnHelpAbout() 
 {
 	CAboutDlg Dlg;
-
-    Dlg.DoModal();	
+	
+	Dlg.DoModal();	
 }
 
 void CDemoDlg::EnablePorts(int DevId)
@@ -447,5 +453,80 @@ void CDemoDlg::DisableButtons()
 	DISABLE_BUTTON(m_DX7Midi)
 	DISABLE_BUTTON(m_WavestationPgms)
 	DISABLE_BUTTON(m_WavestationMidi)
+}
+
+bool CDemoDlg::CheckDevicePorts(int DevId)
+{
+	bool in_ok=false;
+	bool out_ok=false;
+	char in_portname[15];
+	char out_portname[15];
+
+	sprintf_s(in_portname,"InPort_Dev_%d", DevId);
+	sprintf_s(out_portname,"OutPort_Dev_%d", DevId);
+
+	UINT i;
+	MIDIOUTCAPS OutCaps;
+  for(i = 0; i < midi::CMIDIOutDevice::GetNumDevs(); i++)
+  {
+    midi::CMIDIOutDevice::GetDevCaps(i, OutCaps);
+		if (strcmp(OutCaps.szPname,
+						theApp.GetProfileStringA("Settings",
+																(LPCTSTR)out_portname,
+																"not connected"
+																)) == 0 )
+		{
+			out_ok=true;
+			break;
+		}
+	}
+		
+	MIDIINCAPS InCaps;
+  for(i = 0; i < midi::CMIDIInDevice::GetNumDevs(); i++)
+  {
+    midi::CMIDIInDevice::GetDevCaps(i, InCaps);
+		if (strcmp(InCaps.szPname,
+						theApp.GetProfileStringA("Settings",
+																(LPCTSTR)in_portname,
+																"not connected"
+																)) == 0 )
+		{
+			in_ok=true;
+			break;
+		}
+  }
+
+	return (in_ok & out_ok);
+}
+
+void CDemoDlg::MidiCheck(void)
+{
+	m_QUserPgms.EnableWindow(CheckDevicePorts(DIGITECH_ID));
+	m_QUserPgms.UpdateWindow();
+	m_SpxPgms.EnableWindow(CheckDevicePorts(SPX_ID));
+	m_SpxPgms.UpdateWindow();
+	m_DPProPgms.EnableWindow(CheckDevicePorts(DPPRO_ID));
+	m_DPProPgms.UpdateWindow();
+	m_MWXTPgms.EnableWindow(CheckDevicePorts(MWXT_ID));
+	m_MWXTPgms.UpdateWindow();
+	m_DX7Pgms.EnableWindow(CheckDevicePorts(DX7_ID));
+	m_DX7Pgms.UpdateWindow();
+	m_WavestationPgms.EnableWindow(CheckDevicePorts(WAVESTATION_ID));
+	m_WavestationPgms.UpdateWindow();
+	m_ProteusPgms.EnableWindow(CheckDevicePorts(PROTEUS_ID));
+	m_ProteusPgms.UpdateWindow();
+}
+
+BOOL CDemoDlg::PreTranslateMessage(MSG* pMsg) {
+	if (m_hAccelTable) 
+	{
+		if (::TranslateAccelerator(m_hWnd, m_hAccelTable, pMsg))
+ 		{
+			m_Abort = true;
+			SetEvent(ghWriteEvent);
+      return TRUE;
+		}
+	}
+  return CDialog::PreTranslateMessage(pMsg);
 }
 

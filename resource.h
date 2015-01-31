@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by PgmListGenerator.rc
+// Used by Cubase Device Panel Mapper.rc
 //
 #define IDM_ABOUTBOX                    0x0010
 #define IDD_ABOUTBOX                    100
@@ -18,6 +18,7 @@
 #define IDR_XML_SPX                     148
 #define IDR_XML_STUDIOQUAD              149
 #define IDR_XML_PROTEUS                 152
+#define IDR_ACCELERATOR                 153
 #define IDC_MIDI_KEYS                   1000
 #define IDC_MIDI_OUT_DEVS               1001
 #define IDC_MIDI_IN_DEVS                1002
@@ -36,17 +37,22 @@
 #define IDC_DX7_MIDI                    1024
 #define IDC_WAVESTATION_GET_PGM         1025
 #define IDC_WAVESTATION_MIDI            1026
+#define IDC_PROGRESS1                   1027
+#define IDC_PROGRESS                    1027
+#define IDC_BUTTON1                     1028
+#define IDC_DOALL                       1028
 #define ID_FILE_EXIT                    32771
 #define ID_PREF_MIDIDEVICES             32773
 #define ID_HELP_ABOUT                   32774
+#define ID_ABORT                        32779
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        153
-#define _APS_NEXT_COMMAND_VALUE         32779
-#define _APS_NEXT_CONTROL_VALUE         1017
+#define _APS_NEXT_RESOURCE_VALUE        154
+#define _APS_NEXT_COMMAND_VALUE         32781
+#define _APS_NEXT_CONTROL_VALUE         1029
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

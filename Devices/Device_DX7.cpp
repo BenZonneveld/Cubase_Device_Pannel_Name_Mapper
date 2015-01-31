@@ -12,13 +12,16 @@ void CDemoDlg::OnDoDX7PgmDump()
 {
 	EnablePorts(DX7_ID);
 	DisableButtons();
-
+	ResetEvent(ghWriteEvent);
+	m_Abort = false;
+	m_ProgressBar.SetStep(MAXBAR/10);
 	q_Thread = ::AfxBeginThread((AFX_THREADPROC)DoDX7PgmDump, this);
 }
 
 DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 {
 	CDemoDlg *pThis = reinterpret_cast<CDemoDlg *>(Parameter);
+	FILE *Device_Xml_File;
 	TCHAR NPath[MAX_PATH];	
 
 	int channel=0;
@@ -51,12 +54,15 @@ DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 		midi::CLongMsg LongMsg(tMsg,sizeof(tMsg));
 		LongMsg.SendMsg(pThis->m_OutDevice);
 		WaitForSingleObject(pThis->ghWriteEvent, INFINITE);
+		if (pThis->m_Abort == true )
+			goto abort;
 		ResetEvent(pThis->ghWriteEvent);
+		pThis->m_ProgressBar.StepIt();
 	}
 
 	// Now create the device xml:
 	OPEN_TEMPLATE(pThis->m_hInstance, IDR_XML_DX7)
-	fopen_s(&pThis->Pgm_File, "DX7.xml", "w");
+	fopen_s(&Device_Xml_File, "DX7.xml", "wb");
 
 	sprintf_s(comparestring,"<string name=\"Name\" value=\"Bank0 Preset 0");
 
@@ -67,9 +73,14 @@ DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 		if ( strstr(line.c_str(),
 								comparestring) == NULL )
 		{
-			fprintf_s(pThis->Pgm_File,"%s",line.c_str());
+			fprintf_s(Device_Xml_File,"%s",line.c_str());
+			if ( strstr(line.c_str(),
+									"</MidiDevices>") != NULL )
+			{
+									break;
+			}
 		} else {
-			fprintf_s(pThis->Pgm_File, "                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\r\n",pThis->m_dx7_presets[bank][presetnmbr]);
+			fprintf_s(Device_Xml_File, "                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\r\n",pThis->m_dx7_presets[bank][presetnmbr]);
 			
 			presetnmbr++;
 			if ( presetnmbr > 31 )
@@ -83,11 +94,12 @@ DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 					presetnmbr);
 		}
 	}
-	fclose(pThis->Pgm_File);
+	fclose(Device_Xml_File);
 	CLOSE_TEMPLATE
 
+abort:
 	EnableButtons();
-
+	pThis->m_ProgressBar.SetPos(0);
 	SetCurrentDirectory(pThis->MyPath);
 	return 0;
 }

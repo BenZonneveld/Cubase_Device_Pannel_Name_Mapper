@@ -54,7 +54,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335081328">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080101F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -66,7 +66,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335080208">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080102F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -78,7 +78,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335080336">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080103F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -90,7 +90,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335081168">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080104F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -102,7 +102,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335079888">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080105F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -114,7 +114,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335082160">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080106F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -126,7 +126,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066288">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080107F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -138,7 +138,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066352">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080108F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -150,7 +150,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066416">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080109F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -162,7 +162,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066448">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008010AF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -174,7 +174,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066544">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008010BF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -186,7 +186,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066608">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008010CF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -198,7 +198,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066672">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008010DF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -210,7 +210,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066736">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008010EF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -222,7 +222,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066800">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008010FF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -234,7 +234,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066864">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080110F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -246,7 +246,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066928">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080111F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -258,7 +258,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066992">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080112F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -270,7 +270,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335067056">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080113F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -282,7 +282,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065872">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080114F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -294,7 +294,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065936">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080115F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -306,7 +306,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065968">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080116F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -318,7 +318,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066064">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080117F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -330,7 +330,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335066000">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080118F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -342,7 +342,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064816">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080119F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -354,7 +354,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065072">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008011AF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -366,7 +366,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065136">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008011BF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -378,7 +378,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065200">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008011CF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -390,7 +390,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065264">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008011DF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -402,7 +402,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065392">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008011EF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -414,7 +414,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065456">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008011FF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -426,7 +426,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065520">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080120F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -438,7 +438,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065584">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080121F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -450,7 +450,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065648">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080122F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -462,7 +462,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065712">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080123F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -474,7 +474,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065776">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080124F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -486,7 +486,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065840">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080125F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -498,7 +498,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335065904">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080126F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -510,7 +510,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064944">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080127F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -522,7 +522,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064880">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080128F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -534,7 +534,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064784">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080129F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -546,7 +546,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064688">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008012AF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -558,7 +558,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064720">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008012BF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -570,7 +570,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064624">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008012CF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -582,7 +582,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064528">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008012DF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -594,7 +594,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064560">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008012EF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -606,7 +606,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064464">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008012FF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -618,7 +618,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064400">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080130F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -630,7 +630,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064368">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080131F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -642,7 +642,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064272">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080132F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -654,7 +654,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064304">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080133F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -666,7 +666,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064208">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080134F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -678,7 +678,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064112">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080135F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -690,7 +690,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064144">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080136F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -702,7 +702,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335064048">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080137F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -714,7 +714,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063984">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080138F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -726,7 +726,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063952">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080139F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -738,7 +738,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063856">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008013AF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -750,7 +750,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063888">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008013BF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -762,7 +762,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063824">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008013CF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -774,7 +774,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063728">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008013DF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -786,7 +786,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063664">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008013EF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -798,7 +798,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063632">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008013FF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -810,7 +810,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063536">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080140F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -822,7 +822,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063568">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080141F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -834,7 +834,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063472">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080142F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -846,7 +846,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063376">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080143F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -858,7 +858,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063408">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080144F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -870,7 +870,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063312">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080145F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -882,7 +882,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063248">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080146F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -894,7 +894,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063216">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080147F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -906,7 +906,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063152">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080148F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -918,7 +918,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063120">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080149F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -930,7 +930,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063024">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008014AF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -942,7 +942,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335063056">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008014BF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -954,7 +954,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062992">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008014CF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -966,7 +966,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062896">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008014DF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -978,7 +978,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062832">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008014EF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -990,7 +990,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062800">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008014FF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1002,7 +1002,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062736">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080150F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1014,7 +1014,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062704">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080151F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1026,7 +1026,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062640">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080152F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1038,7 +1038,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062608">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080153F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1050,7 +1050,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062512">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080154F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1062,7 +1062,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062544">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080155F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1074,7 +1074,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062480">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080156F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1086,7 +1086,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062416">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080157F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1098,7 +1098,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062352">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080158F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1110,7 +1110,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062288">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080159F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1122,7 +1122,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062192">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008015AF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1134,7 +1134,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062096">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008015BF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1146,7 +1146,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062128">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008015CF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1158,7 +1158,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062064">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008015DF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1170,7 +1170,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335062000">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008015EF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1182,7 +1182,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335061936">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E000008015FF7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1194,7 +1194,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335061840">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080160F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1206,7 +1206,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335061776">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080161F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1218,7 +1218,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335061744">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080162F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>
@@ -1230,7 +1230,7 @@
                                     <obj class="MidiSimpleKnownMessage" ID="335061680">
                                        <obj name="Creator" ID="334701360"/>
                                        <bin name="Message">
-														F0475E0000080163F7
+														PgmChangeSysex
                                        </bin>
                                     </obj>
                                  </list>

@@ -18,10 +18,15 @@
 							istrstream Panel_Template(static_cast<char *>(pLockedResource)); \
 							Panel_Template.rdbuf()->pubsetbuf(static_cast<char *>(pLockedResource), dwResourceSize);
 
-#define CLOSE_TEMPLATE            }\
+#define CLOSE_TEMPLATE\
+							memset(static_cast<char *>(pLockedResource), 0, dwResourceSize);\
+							UnlockResource(pLockedResource);\
+						}\
         }\
     }\
 	}
+
+
 #define DISABLE_BUTTON(x) x.EnableWindow(FALSE); \
 	x.UpdateWindow();
 #define ENABLE_BUTTON(x) pThis->x.EnableWindow(TRUE); \

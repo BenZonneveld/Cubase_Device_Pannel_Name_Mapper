@@ -12,14 +12,16 @@ void CDemoDlg::OnDoMWXTPgmDump()
 {
 	EnablePorts(MWXT_ID);
 	DisableButtons();
-
+	m_Abort = false;
+	ResetEvent(ghWriteEvent);
+	m_ProgressBar.SetStep(1);
 	q_Thread = ::AfxBeginThread((AFX_THREADPROC)DoMWXTPgmDump, this);
 }
 
 DWORD CDemoDlg::DoMWXTPgmDump(LPVOID Parameter)
 {
 	CDemoDlg *	pThis = reinterpret_cast<CDemoDlg *>(Parameter);
-
+	FILE *Device_Xml_File;
 	TCHAR NPath[MAX_PATH];
 	char comparestring[512];
 	unsigned char presetnmbr=0;
@@ -47,11 +49,15 @@ DWORD CDemoDlg::DoMWXTPgmDump(LPVOID Parameter)
 	midi::CLongMsg LongMsg(tMsg,sizeof(tMsg));
 	LongMsg.SendMsg(pThis->m_OutDevice);
 	WaitForSingleObject(pThis->ghWriteEvent, INFINITE);
+	if (pThis->m_Abort == true )
+			goto abort;
+
 	ResetEvent(pThis->ghWriteEvent);
+	pThis->m_ProgressBar.StepIt();
 
 	// Now create the device xml:
 	OPEN_TEMPLATE(pThis->m_hInstance, IDR_XML_MWXT)
-	fopen_s(&pThis->Pgm_File, "Microwave XT.xml", "w");
+	fopen_s(&Device_Xml_File, "Microwave XT.xml", "wb");
 
 	sprintf_s(comparestring,"<string name=\"Name\" value=\"A Preset 0");
 
@@ -63,9 +69,14 @@ DWORD CDemoDlg::DoMWXTPgmDump(LPVOID Parameter)
 		if ( strstr(line.c_str(),
 								comparestring) == NULL )
 		{
-			fprintf_s(pThis->Pgm_File,"%s",line.c_str());
+			fprintf_s(Device_Xml_File,"%s",line.c_str());
+			if ( strstr(line.c_str(),
+									"</MidiDevices>") != NULL )
+			{
+									break;
+			}
 		} else {
-			fprintf_s(pThis->Pgm_File,
+			fprintf_s(Device_Xml_File,
 								"                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\r\n",
 								pThis->m_microwave_presets[bank][presetnmbr]);
 			
@@ -82,11 +93,11 @@ DWORD CDemoDlg::DoMWXTPgmDump(LPVOID Parameter)
 					presetnmbr);
 		}
 	}
-	fclose(pThis->Pgm_File);
+	fclose(Device_Xml_File);
 	CLOSE_TEMPLATE
-
+abort:
 	EnableButtons();
-
+	pThis->m_ProgressBar.SetPos(0);
 	SetCurrentDirectory(pThis->MyPath);
 	return 0;
 }
@@ -110,7 +121,7 @@ void CDemoDlg::MWXTSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
 		}
 		presetname[i]=0x0;
 		sprintf_s(this->m_microwave_presets[bank][presetnmbr-1],
-							"%s%03d  %s\n",
+							"%s%03d  %s",
 							banklabel,
 							presetnmbr,
 							presetname);

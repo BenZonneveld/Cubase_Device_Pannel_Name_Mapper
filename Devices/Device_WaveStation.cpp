@@ -13,14 +13,16 @@ void CDemoDlg::OnDoWavestationPgmDump()
 {
 	EnablePorts(WAVESTATION_ID);
 	DisableButtons();
-
+	m_Abort = false;
+	ResetEvent(ghWriteEvent);
+	m_ProgressBar.SetStep(MAXBAR/4);
 	q_Thread = ::AfxBeginThread((AFX_THREADPROC)DoWavestationPgmDump, this);
 }
 
 DWORD CDemoDlg::DoWavestationPgmDump(LPVOID Parameter)
 {
 	CDemoDlg *pThis = reinterpret_cast<CDemoDlg *>(Parameter);
-
+	FILE *Device_Xml_File;
 	TCHAR NPath[MAX_PATH];	
 	unsigned char channel=0;
 	
@@ -49,12 +51,16 @@ DWORD CDemoDlg::DoWavestationPgmDump(LPVOID Parameter)
 		midi::CLongMsg LongMsg(tMsg,sizeof(tMsg));
 		LongMsg.SendMsg(pThis->m_OutDevice);
 		WaitForSingleObject(pThis->ghWriteEvent, INFINITE);
+		if (pThis->m_Abort == true )
+			goto abort;
+
 		ResetEvent(pThis->ghWriteEvent);
+		pThis->m_ProgressBar.StepIt();
 	}
 
 	// Now create the device xml:
 	OPEN_TEMPLATE(pThis->m_hInstance, IDR_XML_WAVESTATION)
-	fopen_s(&pThis->Pgm_File, "Wavestation.xml", "w");
+	fopen_s(&Device_Xml_File, "Wavestation.xml", "wb");
 
 	sprintf_s(comparestring,"<string name=\"Name\" value=\"RAM1 Preset 0");
 
@@ -65,9 +71,14 @@ DWORD CDemoDlg::DoWavestationPgmDump(LPVOID Parameter)
 		if ( strstr(line.c_str(),
 								comparestring) == NULL )
 		{
-			fprintf_s(pThis->Pgm_File,"%s",line.c_str());
+			fprintf_s(Device_Xml_File,"%s",line.c_str());
+			if ( strstr(line.c_str(),
+									"</MidiDevices>") != NULL )
+			{
+									break;
+			}
 		} else {
-			fprintf_s(pThis->Pgm_File,
+			fprintf_s(Device_Xml_File,
 								"                     <string name=\"Name\" value=\"%s\" wide=\"true\"/>\r\n",
 								pThis->m_wavestation_presets[bank][presetnmbr]);
 			
@@ -77,11 +88,10 @@ DWORD CDemoDlg::DoWavestationPgmDump(LPVOID Parameter)
 				bank++;
 				presetnmbr = 0;
 			}
-			if ( presetnmbr > 99 )
+			xml_presetnmbr++;
+			if ( xml_presetnmbr > 99 )
 			{
 				xml_presetnmbr = 0;
-			} else {
-				xml_presetnmbr++;
 			}
 			sprintf_s(comparestring,
 								"                     <string name=\"Name\" value=\"%s Preset %d",
@@ -90,11 +100,11 @@ DWORD CDemoDlg::DoWavestationPgmDump(LPVOID Parameter)
 
 		}
 	}
-	fclose(pThis->Pgm_File);
+	fclose(Device_Xml_File);
 	CLOSE_TEMPLATE
-
+abort:
 	EnableButtons();
-
+	pThis->m_ProgressBar.SetPos(0);
 	SetCurrentDirectory(pThis->MyPath);
 	return 0;
 }
@@ -129,7 +139,7 @@ void CDemoDlg::WavestationSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
 		}
 
 		sprintf_s(this->m_wavestation_presets[bank][presetnmbr],
-							"%02d  %s\n",
+							"%02d  %s",
 							presetnmbr,
 							PerfBank.Perf_Name);
 		presetnmbr++;
