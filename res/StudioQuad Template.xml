@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MidiDevices>
    <list name="Devices" type="obj">
-      <obj class="PMidiParameterDevice" ID="64111208">
+      <obj class="PMidiParameterDevice" ID="887518304">
          <string name="DeviceNode Name" value="Quad" wide="true"/>
          <string name="ClassName" value="Midi Device"/>
          <string name="IDString" value="Quad"/>
          <list name="Children" type="obj">
-            <obj class="PMidiDeviceNode" ID="63950176">
+            <obj class="PMidiDeviceNode" ID="1031479848">
                <string name="DeviceNode Name" value="Quad" wide="true"/>
                <string name="ClassName" value="MidiDeviceNode"/>
                <string name="IDString" value="Quad"/>
@@ -27,7 +27,7 @@
                <int name="Channel ID" value="0"/>
                <string name="Port Name" value="2- Express  128: Port 2"/>
                <list name="Banks" type="obj">
-                  <obj class="PMidiRomBank" ID="242238944">
+                  <obj class="PMidiRomBank" ID="1026817248">
                      <string name="PresetBankName" value="Studio Quad" wide="true"/>
                      <string name="IDString" value="Studio Quad"/>
                      <list name="Children" type="obj">
@@ -3405,7 +3405,7 @@
                         </obj>
                      </list>
                      <list name="Presets" type="obj">
-                        <obj class="PMidiPreset" ID="242808288">
+                        <obj class="PMidiPreset" ID="1031229704">
                            <string name="Name" value="Off" wide="true"/>
                            <int name="CountMsgs" value="0"/>
                         </obj>
@@ -3425,42 +3425,48 @@
             <item value="CA1729D088FC4857937F78CC37D45B48"/>
          </list>
          <list name="Banks" type="obj">
-            <item value="242238944"/>
+            <item value="1026817248"/>
          </list>
       </obj>
    </list>
-
-   <obj class="MidiStandardMessageFilter" ID="334701360">
-      <string name="Info" value="Name" wide="true"/>
-      <int name="Tag" value="-1"/>
-      <obj class="MidiSimpleMessageFilter" name="Filter" ID="334600464">
-         <list name="Values" type="obj">
-            <obj class="MidiSimpleValue" ID="331950008">
-               <int name="Type" value="256"/>
-               <int name="Tag" value="10000"/>
-               <int name="Bits" value="7"/>
-               <int name="BitsPerByte" value="7"/>
-               <list name="Pos" type="int">
-                  <item value="7"/>
-                  <item value="-1"/>
-                  <item value="-1"/>
-                  <item value="-1"/>
-               </list>
-               <string name="UserName" value="Value 7"/>
-            </obj>
-         </list>
-         <bin name="Mask">
-				F0FF47FF5EFF0000000008FF01FF0000F7FF
+   <list name="UIDescriptions" type="list">
+      <item>
+         <bin name="Data">
+				3C736B696E3E0D0A093C74656D706C617465733E0D0A09093C74656D706C6174
+				65206E616D653D225B3832453642333839344239453443394541454630434541
+				4439304233463734305D51756164222073697A653D22302C302C3135352C3334
+				30222073697A656C696D69743D22302C302C302C30223E0D0A0909093C646563
+				6F722073697A653D22302C302C3135352C33343022207374796C653D2267726F
+				75706672616D6522206267636F6C6F723D222330303030303622207261646975
+				733D222D31222070656E2D77696474683D2231222F3E0D0A0909093C76696577
+				206E616D653D2247726F7570222073697A653D22302C302C3135302C3230223E
+				0D0A090909093C666F6E74206E616D653D2264617461584C222073697A653D22
+				31322220636F6C6F723D22736368656D65477261793930223E0D0A0909090909
+				3C6C6162656C2073697A653D22302C302C3135302C323022207469746C653D22
+				53747564696F205175616422206A7573743D2263656E746572222F3E0D0A0909
+				09093C2F666F6E743E0D0A0909093C2F766965773E0D0A09093C2F74656D706C
+				6174653E0D0A093C2F74656D706C617465733E0D0A0D0A093C7265736F757263
+				65732F3E0D0A0D0A093C6865616465722F3E0D0A0D0A093C736368656D652F3E
+				0D0A0D0A093C736372697074732F3E0D0A0D0A3C2F736B696E3E0D0A
          </bin>
-      </obj>
-   </obj>
+         <obj class="FNPath" name="Path" ID="1032754080">
+            <string name="Name" value="Quad C1F0DE967ABF42DBB9AF962F2DFD0C0E.xml" wide="true"/>
+            <string name="Path" value="C:\Users\root\AppData\Roaming\Steinberg\Cubase 8\Panels\" wide="true"/>
+            <member name="FileType">
+               <string name="DosType" value="xml" wide="true"/>
+               <string name="UnixType" value="xml" wide="true"/>
+               <string name="Name" value="XML File" wide="true"/>
+            </member>
+         </obj>
+      </item>
+   </list>
 
-   <obj class="MidiStandardMessageFilter" ID="87487792">
-      <string name="Info" value="Pitchbend" wide="true"/>
+   <obj class="MidiStandardMessageFilter" ID="164950680">
+      <string name="Info" value="Program Change" wide="true"/>
       <int name="Tag" value="-1"/>
-      <obj class="MidiSimpleMessageFilter" name="Filter" ID="87984536">
+      <obj class="MidiSimpleMessageFilter" name="Filter" ID="165276424">
          <list name="Values" type="obj">
-            <obj class="MidiSimpleValue" ID="27397484">
+            <obj class="MidiSimpleValue" ID="50991792">
                <int name="Type" value="0"/>
                <int name="Tag" value="0"/>
                <int name="Bits" value="4"/>
@@ -3473,7 +3479,33 @@
                </list>
                <string name="UserName" value="" wide="true"/>
             </obj>
-            <obj class="MidiSimpleValue" ID="27397572">
+            <obj class="MidiSimpleValue" ID="50992972">
+               <int name="Type" value="256"/>
+               <int name="Tag" value="5"/>
+               <int name="Bits" value="7"/>
+               <int name="BitsPerByte" value="7"/>
+               <list name="Pos" type="int">
+                  <item value="1"/>
+                  <item value="-1"/>
+                  <item value="-1"/>
+                  <item value="-1"/>
+               </list>
+               <string name="UserName" value="" wide="true"/>
+            </obj>
+         </list>
+         <bin name="Mask">
+				C0F00080
+         </bin>
+      </obj>
+   </obj>
+
+   <obj class="MidiStandardMessageFilter" ID="164917704">
+      <string name="Info" value="Pitchbend" wide="true"/>
+      <int name="Tag" value="-1"/>
+      <obj class="MidiSimpleMessageFilter" name="Filter" ID="165276704">
+         <list name="Values" type="obj">
+            <item value="50991792"/>
+            <obj class="MidiSimpleValue" ID="50993068">
                <int name="Type" value="256"/>
                <int name="Tag" value="7"/>
                <int name="Bits" value="14"/>

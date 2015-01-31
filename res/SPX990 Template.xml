@@ -1389,6 +1389,15 @@
 				65722F3E0D0A0D0A3C736368656D652F3E0D0A0D0A3C736372697074732F3E0D
 				0A0D0A
          </bin>
+         <obj class="FNPath" name="Path" ID="246002160">
+            <string name="Name" value="SPX990 4BA64E2523FD4D05B49AEB4D16FD9D5B.xml" wide="true"/>
+            <string name="Path" value="C:\Users\root\AppData\Roaming\Steinberg\Cubase 5\Panels\" wide="true"/>
+            <member name="FileType">
+               <string name="DosType" value="xml" wide="true"/>
+               <string name="UnixType" value="xml" wide="true"/>
+               <string name="Name" value="XML File" wide="true"/>
+            </member>
+         </obj>
       </item>
    </list>
 
