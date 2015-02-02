@@ -23,6 +23,7 @@ DWORD CDemoDlg::DoQuadUserPgmDump(LPVOID Parameter)
 {
 	CDemoDlg *pThis = (CDemoDlg *)Parameter;
 	FILE *Device_Xml_File;
+	MIDIOUTCAPS OutCaps;
 	TCHAR NPath[MAX_PATH];
 	char comparestring[512];
 	unsigned char presetnmbr=0;
@@ -86,7 +87,15 @@ DWORD CDemoDlg::DoQuadUserPgmDump(LPVOID Parameter)
 		{
 			if ( strstr(line.c_str(), "PgmChangeSysex") == NULL )
 			{
-				fprintf_s(Device_Xml_File,"%s",line.c_str());
+				if (strstr(line.c_str(), "Port Name" ) == NULL )
+				{
+					fprintf_s(Device_Xml_File,"%s",line.c_str());
+				} else {
+					pThis->m_OutDevice.GetDevCaps(pThis->m_OutDevice.GetDevID(),OutCaps);
+					fprintf_s(Device_Xml_File,
+										"               <string name=\"Port Name\" value=\"%s\"/>\r\n",
+										OutCaps.szPname);
+				}
 			} else {
 				preset_high=(presetnmbr & 0x80 ) >> 7;
 				preset_lo=presetnmbr&0x7F;

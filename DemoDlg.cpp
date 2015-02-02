@@ -358,16 +358,14 @@ void CDemoDlg::OnPrefMididevices(int DevId)
         {
             // If the client clicked OK and they chose to change the 
             // MIDI output device
-            if(Dlg.IsOutDevChanged())
+          
+            if( Dlg.IsOutDevChanged() && DevId != DPPRO_ID )
             {
-							if ( Dlg.m_OutDevsCombo.IsWindowEnabled() == TRUE )
-							{
-                m_OutDevice.Close();
-								midi::CMIDIOutDevice::GetDevCaps(Dlg.GetOutDevId() , moutCaps);
-								theApp.WriteProfileStringA("Settings", (LPCTSTR)portname, (LPCTSTR)moutCaps.szPname);
-								m_OutDevice.Open(m_OutDevice.GetIDFromName(theApp.GetProfileStringA("Settings",(LPCTSTR)portname,"not connected")));
-							}
-            }
+              m_OutDevice.Close();
+							midi::CMIDIOutDevice::GetDevCaps(Dlg.GetOutDevId() , moutCaps);
+							theApp.WriteProfileStringA("Settings", (LPCTSTR)portname, (LPCTSTR)moutCaps.szPname);
+							m_OutDevice.Open(m_OutDevice.GetIDFromName(theApp.GetProfileStringA("Settings",(LPCTSTR)portname,"not connected")));
+						}
 
             // If the client clicked OK and they chose to change the 
             // MIDI input device

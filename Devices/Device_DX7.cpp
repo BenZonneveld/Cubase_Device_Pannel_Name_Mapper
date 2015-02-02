@@ -22,6 +22,7 @@ DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 {
 	CDemoDlg *pThis = reinterpret_cast<CDemoDlg *>(Parameter);
 	FILE *Device_Xml_File;
+	MIDIOUTCAPS OutCaps;
 	TCHAR NPath[MAX_PATH];	
 
 	int channel=pThis->m_Device_Id_Channel - 1;
@@ -72,7 +73,15 @@ DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 		if ( strstr(line.c_str(),
 								comparestring) == NULL )
 		{
-			fprintf_s(Device_Xml_File,"%s",line.c_str());
+			if (strstr(line.c_str(), "Port Name" ) == NULL )
+			{
+				fprintf_s(Device_Xml_File,"%s",line.c_str());
+			} else {
+				pThis->m_OutDevice.GetDevCaps(pThis->m_OutDevice.GetDevID(),OutCaps);
+				fprintf_s(Device_Xml_File,
+									"               <string name=\"Port Name\" value=\"%s\"/>\r\n",
+									OutCaps.szPname);
+			}
 			if ( strstr(line.c_str(),
 									"</MidiDevices>") != NULL )
 			{

@@ -26,6 +26,7 @@ DWORD CDemoDlg::DoDPProPgmDump(LPVOID Parameter)
 {
 	CDemoDlg *pThis = reinterpret_cast<CDemoDlg *>(Parameter);
 	FILE *Device_Xml_File;
+	MIDIOUTCAPS OutCaps;
 	TCHAR NPath[MAX_PATH];
 	char comparestring[512];
 	unsigned char presetnmbr=0;
@@ -63,7 +64,15 @@ DWORD CDemoDlg::DoDPProPgmDump(LPVOID Parameter)
 		if ( strstr(line.c_str(),
 								comparestring) == NULL )
 		{
-			fprintf_s(Device_Xml_File,"%s\n",line.c_str());
+			if (strstr(line.c_str(), "Port Name" ) == NULL )
+			{
+				fprintf_s(Device_Xml_File,"%s",line.c_str());
+			} else {
+				pThis->m_OutDevice.GetDevCaps(pThis->m_OutDevice.GetDevID(),OutCaps);
+				fprintf_s(Device_Xml_File,
+									"               <string name=\"Port Name\" value=\"%s\"/>\r\n",
+									OutCaps.szPname);
+			}
 			if ( strstr(line.c_str(),
 									"</MidiDevices>") != NULL )
 			{
