@@ -35,7 +35,7 @@ DWORD CDemoDlg::DoSpxUserPgmDump(LPVOID Parameter)
 
 	int MaxPreset=100;
 
-	int channel=pThis->m_Device_Id_Channel - 1;
+	int channel=pThis->m_Device_Id_Channel;
 	char tMsg[15];
 
 	tMsg[0]=0xF0;

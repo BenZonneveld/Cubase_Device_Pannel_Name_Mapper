@@ -25,7 +25,7 @@ DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 	MIDIOUTCAPS OutCaps;
 	TCHAR NPath[MAX_PATH];	
 
-	int channel=pThis->m_Device_Id_Channel - 1;
+	int channel=pThis->m_Device_Id_Channel;
 	char comparestring[512];
 	unsigned char presetnmbr=0;
 	unsigned char bank;

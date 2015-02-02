@@ -110,7 +110,6 @@ BOOL CMIDIDevsDlg::OnInitDialog()
 		m_DeviceChannelId = theApp.GetProfileIntA("Settings",(LPCTSTR)dev_id,-1);
 		m_DeviceChannelIdCombo.SetCurSel(m_DeviceChannelId);
 
-
 	return TRUE;  
 }
 

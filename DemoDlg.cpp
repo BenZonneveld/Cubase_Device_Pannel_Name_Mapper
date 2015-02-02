@@ -424,7 +424,7 @@ void CDemoDlg::EnablePorts(int DevId)
 	char portname[15];
 	char dev_id[20];
 	sprintf_s(dev_id,"Device_Channel_Id_%d",DIGITECH_ID);
-	m_Device_Id_Channel=GetProfileIntA("Settings",(LPCTSTR)dev_id,-1);
+	m_Device_Id_Channel=theApp.GetProfileIntA("Settings",(LPCTSTR)dev_id,-1);
 
 	sprintf_s(portname,"InPort_Dev_%d", DevId);
   m_InDevice.SetReceiver(*this);
