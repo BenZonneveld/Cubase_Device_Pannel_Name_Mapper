@@ -24,7 +24,7 @@ DWORD CDemoDlg::DoWavestationPgmDump(LPVOID Parameter)
 	CDemoDlg *pThis = reinterpret_cast<CDemoDlg *>(Parameter);
 	FILE *Device_Xml_File;
 	TCHAR NPath[MAX_PATH];	
-	unsigned char channel=pThis->m_Device_Id_Channel;
+	unsigned char channel=pThis->m_Device_Id_Channel - 1;
 	
 	char comparestring[512];
 	unsigned char presetnmbr=0;

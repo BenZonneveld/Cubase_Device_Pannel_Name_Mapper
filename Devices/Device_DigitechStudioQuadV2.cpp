@@ -35,7 +35,7 @@ DWORD CDemoDlg::DoQuadUserPgmDump(LPVOID Parameter)
 	unsigned char preset_high;
 	unsigned char preset_lo;
 	unsigned char pgm;
-	unsigned char channel=pThis->m_Device_Id_Channel;
+	unsigned char channel=pThis->m_Device_Id_Channel - 1;
 	char tMsg[12];
 
 	tMsg[0]=0xF0;
