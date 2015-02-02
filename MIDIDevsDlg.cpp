@@ -6,6 +6,7 @@
 #include "MIDIDevsDlg.h"
 #include "MIDIOutDevice.h"
 #include "MIDIInDevice.h"
+#include "DeviceIds.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -22,7 +23,11 @@ CMIDIDevsDlg::CMIDIDevsDlg(CWnd* pParent /*=NULL*/)
     m_OutDevId(0),
     m_InDevId(0),
     m_OutChanged(false),
-    m_InChanged(false)
+    m_InChanged(false),
+		m_DeviceChannelIdChanged(false),
+		m_DeviceChannelId(0),
+		m_MaxDeviceChannel(0)
+
 {
 	//{{AFX_DATA_INIT(CMIDIDevsDlg)
 		// NOTE: the ClassWizard will add member initialization here
@@ -36,6 +41,7 @@ void CMIDIDevsDlg::DoDataExchange(CDataExchange* pDX)
 	//{{AFX_DATA_MAP(CMIDIDevsDlg)
 	DDX_Control(pDX, IDC_MIDI_OUT_DEVS, m_OutDevsCombo);
 	DDX_Control(pDX, IDC_MIDI_IN_DEVS, m_InDevsCombo);
+	DDX_Control(pDX, IDC_MIDI_CHANNEL_DEVICE_ID, m_DeviceChannelIdCombo);
 	//}}AFX_DATA_MAP
 }
 
@@ -52,24 +58,31 @@ BOOL CMIDIDevsDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
+	char message[4];
+	char dev_id[20];
+  UINT i;
     //
     // Initialize output device combo box with the names of all of the 
     // MIDI output devices available
     //
-	
-    UINT i;
-		MIDIOUTCAPS OutCaps;
-    for(i = 0; i < midi::CMIDIOutDevice::GetNumDevs(); i++)
-    {
-        midi::CMIDIOutDevice::GetDevCaps(i, OutCaps);
+    if ( m_dev_id == DPPRO_ID )
+		{
+			m_OutDevsCombo.EnableWindow(FALSE);
+			m_OutDevsCombo.UpdateWindow();
+		} else {
+
+			MIDIOUTCAPS OutCaps;
+		  for(i = 0; i < midi::CMIDIOutDevice::GetNumDevs(); i++)
+			{
+			  midi::CMIDIOutDevice::GetDevCaps(i, OutCaps);
         m_OutDevsCombo.AddString(OutCaps.szPname);
-    }
+			}
 
-    if(midi::CMIDIOutDevice::GetNumDevs() > 0)
-    {
+	    if(midi::CMIDIOutDevice::GetNumDevs() > 0)
+		  {
         m_OutDevsCombo.SetCurSel(m_OutDevId);
-    }
-
+			}
+		}
     //
     // Initialize input device combo box with the names of all of the
     // MIDI input devices available on this system
@@ -87,6 +100,17 @@ BOOL CMIDIDevsDlg::OnInitDialog()
         m_InDevsCombo.SetCurSel(m_InDevId);
     }
 	
+		for (i = m_OffSet ; i <= m_MaxDeviceChannel ; i++)
+		{
+			sprintf_s(message,	"%d",i);
+			m_DeviceChannelIdCombo.AddString((LPCTSTR)message);
+		}
+
+		sprintf_s(dev_id,"Device_Channel_Id_%d",m_dev_id);
+		m_DeviceChannelId = theApp.GetProfileIntA("Settings",(LPCTSTR)dev_id,-1);
+		m_DeviceChannelIdCombo.SetCurSel(m_DeviceChannelId);
+
+
 	return TRUE;  
 }
 
@@ -100,14 +124,17 @@ void CMIDIDevsDlg::OnOK()
     // selection has been made
     //
 
-    if(m_OutDevsCombo.GetCount() > 0)
-    {
-        if(m_OutDevId != m_OutDevsCombo.GetCurSel())
-        {
-	        m_OutDevId = m_OutDevsCombo.GetCurSel();
+		if ( m_OutDevsCombo.IsWindowEnabled() == TRUE )
+		{
+	    if(m_OutDevsCombo.GetCount() > 0)
+		  {
+			    if(m_OutDevId != m_OutDevsCombo.GetCurSel())
+				  {
+					  m_OutDevId = m_OutDevsCombo.GetCurSel();
             m_OutChanged = true;
-        }
-    }
+					}
+			}
+		}
 
     if(m_InDevsCombo.GetCount() > 0)
     {
@@ -117,6 +144,13 @@ void CMIDIDevsDlg::OnOK()
             m_InChanged = true;
         }
     }
+
+		if ( m_DeviceChannelId != m_DeviceChannelIdCombo.GetCurSel())
+		{
+			m_DeviceChannelId = m_DeviceChannelIdCombo.GetCurSel();
+			m_DeviceChannelIdChanged = true;
+		}
 	
 	CDialog::OnOK();
 }
+

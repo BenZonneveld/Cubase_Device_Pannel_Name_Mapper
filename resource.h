@@ -39,8 +39,8 @@
 #define IDC_WAVESTATION_MIDI            1026
 #define IDC_PROGRESS1                   1027
 #define IDC_PROGRESS                    1027
-#define IDC_BUTTON1                     1028
-#define IDC_DOALL                       1028
+#define IDC_MIDI_CHANNEL                1032
+#define IDC_MIDI_CHANNEL_DEVICE_ID      1032
 #define ID_FILE_EXIT                    32771
 #define ID_PREF_MIDIDEVICES             32773
 #define ID_HELP_ABOUT                   32774
@@ -52,7 +52,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        154
 #define _APS_NEXT_COMMAND_VALUE         32781
-#define _APS_NEXT_CONTROL_VALUE         1029
+#define _APS_NEXT_CONTROL_VALUE         1034
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

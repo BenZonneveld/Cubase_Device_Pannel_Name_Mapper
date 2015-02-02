@@ -1391,7 +1391,7 @@
          </bin>
          <obj class="FNPath" name="Path" ID="246002160">
             <string name="Name" value="SPX990 4BA64E2523FD4D05B49AEB4D16FD9D5B.xml" wide="true"/>
-            <string name="Path" value="C:\Users\root\AppData\Roaming\Steinberg\Cubase 5\Panels\" wide="true"/>
+            <string name="Path" value="C:\Users\root\AppData\Roaming\Steinberg\Cubase 8\Panels\" wide="true"/>
             <member name="FileType">
                <string name="DosType" value="xml" wide="true"/>
                <string name="UnixType" value="xml" wide="true"/>

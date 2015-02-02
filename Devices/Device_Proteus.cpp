@@ -24,7 +24,7 @@ DWORD CDemoDlg::DoProteusPgmDump(LPVOID Parameter)
 	FILE *Device_Xml_File;
 	TCHAR NPath[MAX_PATH];
 	char tMsg[8];
-	int channel=0;
+	int device_id=pThis->m_Device_Id_Channel;
 
 	char comparestring[512];
 	unsigned char presetnmbr=0;
@@ -40,7 +40,7 @@ DWORD CDemoDlg::DoProteusPgmDump(LPVOID Parameter)
 	tMsg[0]=0xF0;
 	tMsg[1]=0x18; // Emu ID
 	tMsg[2]=0x04; // Product ID for Proteus
-	tMsg[3]=0x00; // Device ID
+	tMsg[3]=device_id; // Device ID
 	tMsg[4]=0x00;	// Command
 	tMsg[5]=0x10; // Preset Number lsb 
 	tMsg[6]=0x00;	// Preset Number msb
@@ -120,11 +120,12 @@ void CDemoDlg::ProteusSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
 	}
 		
 	presetname[i]=0x0;
-	if ( presetnmbr > 128 )
+	presetnmbr--;
+	if ( presetnmbr > 127 )
 	{
 		;
 	} else {
-		sprintf_s(this->m_proteus_presets[presetnmbr-1],
+		sprintf_s(this->m_proteus_presets[presetnmbr],
 			"%3d  %s", 
 			presetnmbr,
 			presetname);

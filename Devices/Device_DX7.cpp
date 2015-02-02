@@ -24,7 +24,7 @@ DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 	FILE *Device_Xml_File;
 	TCHAR NPath[MAX_PATH];	
 
-	int channel=0;
+	int channel=pThis->m_Device_Id_Channel;
 	char comparestring[512];
 	unsigned char presetnmbr=0;
 	unsigned char bank;
@@ -41,11 +41,10 @@ DWORD CDemoDlg::DoDX7PgmDump(LPVOID Parameter)
 	tMsg[3]=0x09; // Request Bulk Dump
 	tMsg[4]=0xF7;
 
-#define CHANNEL	0
 	for( bank = 0 ; bank < 10 ; bank++)
 	{
-		midi::CShortMsg BankMsg(midi::CONTROL_CHANGE, CHANNEL, 6, bank*13, 0);
-		midi::CShortMsg PgmChangeMsg(midi::PROGRAM_CHANGE, CHANNEL, 0, 0,0);
+		midi::CShortMsg BankMsg(midi::CONTROL_CHANGE, channel, 6, bank*13, 0);
+		midi::CShortMsg PgmChangeMsg(midi::PROGRAM_CHANGE, channel, 0, 0,0);
 		BankMsg.SendMsg(pThis->m_OutDevice);
 		PgmChangeMsg.SendMsg(pThis->m_OutDevice);
 		pThis->m_dx_bank=bank;

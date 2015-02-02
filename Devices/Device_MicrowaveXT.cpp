@@ -32,13 +32,13 @@ DWORD CDemoDlg::DoMWXTPgmDump(LPVOID Parameter)
 
 	int MaxPreset=100;
 
-	int channel=0;
+	int device_id=pThis->m_Device_Id_Channel;
 	char tMsg[9];
 
 	tMsg[0]=0xF0;
 	tMsg[1]=0x3e; // Waldorf ID
 	tMsg[2]=0x0E; // Equipment ID for Microwave 2
-	tMsg[3]=0x7F; // Device ID, here broadcast
+	tMsg[3]=device_id; // Device ID, here broadcast
 	tMsg[4]=0x00;	// Message ID: SNDR
 	tMsg[5]=0x10;
 	tMsg[6]=0x00;

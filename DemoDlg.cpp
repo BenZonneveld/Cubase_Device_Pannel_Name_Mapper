@@ -315,16 +315,12 @@ void CDemoDlg::OnPrefMididevices(int DevId)
 	MIDIOUTCAPS	moutCaps;
 	MIDIINCAPS	minCaps;
 	char portname[15];
+	char dev_id[20];
 
 		try
     {
 	    CMIDIDevsDlg Dlg;
 				
-			//if ( DevId == DPPRO_ID )
-			//{
-			//	Dlg.m_OutDevsCombo.EnableWindow(FALSE);
-			//	Dlg.m_OutDevsCombo.UpdateWindow();
-			//}
         //
         // Initialize MIDI device dialog box
         //
@@ -333,28 +329,49 @@ void CDemoDlg::OnPrefMididevices(int DevId)
         {
             Dlg.SetOutDevId(m_OutDevice.GetDevID());
         }
+	
 
         if(m_InDevice.IsOpen())
         {
             Dlg.SetInDevId(m_InDevice.GetDevID());
         }
 
+				Dlg.SetDeviceId(DevId);
+				switch ( DevId)
+				{
+					case MWXT_ID:
+						Dlg.SetMaxDeviceChannel(0x7F);
+						Dlg.SetOffSet(false);
+						break;
+					case PROTEUS_ID:
+						Dlg.SetMaxDeviceChannel(15);
+						Dlg.SetOffSet(false);
+						break;
+					default:
+						Dlg.SetMaxDeviceChannel(16);
+						Dlg.SetOffSet(true);
+						break;
+				}
+
         // Run dialog box
         if(Dlg.DoModal() == IDOK)
         {
             // If the client clicked OK and they chose to change the 
             // MIDI output device
-//            if(Dlg.IsOutDevChanged())
+            if(Dlg.IsOutDevChanged())
             {
+							if ( Dlg.m_OutDevsCombo.IsWindowEnabled() == TRUE )
+							{
                 m_OutDevice.Close();
 								midi::CMIDIOutDevice::GetDevCaps(Dlg.GetOutDevId() , moutCaps);
 								theApp.WriteProfileStringA("Settings", (LPCTSTR)portname, (LPCTSTR)moutCaps.szPname);
 								m_OutDevice.Open(m_OutDevice.GetIDFromName(theApp.GetProfileStringA("Settings",(LPCTSTR)portname,"not connected")));
+							}
             }
 
             // If the client clicked OK and they chose to change the 
             // MIDI input device
- //           if(Dlg.IsInDevChanged())
+            if(Dlg.IsInDevChanged())
             {
 							sprintf_s(portname,"InPort_Dev_%d", DevId);
 
@@ -376,6 +393,11 @@ void CDemoDlg::OnPrefMididevices(int DevId)
                 // Start receiving MIDI events 	
                 m_InDevice.StartRecording(); 
             }
+						if ( Dlg.IsDeviceChannelIdChanged() )
+						{
+							sprintf_s(dev_id,"Device_Channel_Id_%d",DevId);
+							theApp.WriteProfileInt("Settings", (LPCTSTR)dev_id, Dlg.GetDeviceChannelId());
+						}
         }	
     }
     catch(const std::exception &ex)
@@ -402,6 +424,9 @@ void CDemoDlg::OnHelpAbout()
 void CDemoDlg::EnablePorts(int DevId)
 {
 	char portname[15];
+	char dev_id[20];
+	sprintf_s(dev_id,"Device_Channel_Id_%d",DIGITECH_ID);
+	m_Device_Id_Channel=GetProfileIntA("Settings",(LPCTSTR)dev_id,-1);
 
 	sprintf_s(portname,"InPort_Dev_%d", DevId);
   m_InDevice.SetReceiver(*this);
@@ -459,11 +484,14 @@ bool CDemoDlg::CheckDevicePorts(int DevId)
 {
 	bool in_ok=false;
 	bool out_ok=false;
+	bool device_id_set=false;
 	char in_portname[15];
 	char out_portname[15];
+	char dev_id[20];
 
 	sprintf_s(in_portname,"InPort_Dev_%d", DevId);
 	sprintf_s(out_portname,"OutPort_Dev_%d", DevId);
+	sprintf_s(dev_id,"Device_Channel_Id_%d",DevId);
 
 	UINT i;
 	MIDIOUTCAPS OutCaps;
@@ -496,7 +524,12 @@ bool CDemoDlg::CheckDevicePorts(int DevId)
 		}
   }
 
-	return (in_ok & out_ok);
+	if ( theApp.GetProfileIntA("Settings",(LPCTSTR)dev_id,-1) != -1 )
+	{
+		device_id_set=true;
+	}
+
+	return (in_ok & out_ok & device_id_set);
 }
 
 void CDemoDlg::MidiCheck(void)

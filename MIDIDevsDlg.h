@@ -19,9 +19,10 @@ public:
     //
     // Accessors
     //
-
+		
     UINT GetOutDevId() const { return m_OutDevId; }
     UINT GetInDevId() const { return m_InDevId; }
+		UINT GetDeviceChannelId() const { return m_DeviceChannelId; }
 
     //
     // Mutators
@@ -29,6 +30,9 @@ public:
 
     void SetOutDevId(UINT OutDevId) { m_OutDevId = OutDevId; }
     void SetInDevId(UINT InDevId) { m_InDevId = InDevId; }
+		void SetDeviceId(UINT DeviceId) { m_dev_id = DeviceId; }
+		void SetMaxDeviceChannel(UINT MaxDevChannel) { m_MaxDeviceChannel = MaxDevChannel; }
+		void SetOffSet(bool Offset) { m_OffSet = Offset; }
 
     // Has the client selected a new output device?
     bool IsOutDevChanged() const { return m_OutChanged; }
@@ -36,11 +40,16 @@ public:
     // Has the client selected a new input device?
     bool IsInDevChanged() const { return m_InChanged; }
 
+		// Has the client selected a new device id / channel?
+		bool IsDeviceChannelIdChanged() const { return m_DeviceChannelIdChanged; }
+
 // Dialog Data
 	//{{AFX_DATA(CMIDIDevsDlg)
 	enum { IDD = IDD_MIDI_DEVS_DLG };
 	CComboBox	m_OutDevsCombo;
 	CComboBox	m_InDevsCombo;
+	CComboBox	m_DeviceChannelIdCombo;
+	
 	//}}AFX_DATA
 
 
@@ -55,9 +64,14 @@ public:
 protected:
     UINT m_OutDevId;
     UINT m_InDevId;
+		UINT m_DeviceChannelId;
+		UINT m_MaxDeviceChannel;
+		int m_dev_id;
 
     bool m_OutChanged;
     bool m_InChanged;
+		bool m_DeviceChannelIdChanged;
+		bool m_OffSet;
 
 	// Generated message map functions
 	//{{AFX_MSG(CMIDIDevsDlg)
@@ -65,6 +79,7 @@ protected:
 	virtual void OnOK();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+public:
 };
 
 //{{AFX_INSERT_LOCATION}}

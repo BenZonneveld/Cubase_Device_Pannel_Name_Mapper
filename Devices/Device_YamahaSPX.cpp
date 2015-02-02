@@ -34,7 +34,7 @@ DWORD CDemoDlg::DoSpxUserPgmDump(LPVOID Parameter)
 
 	int MaxPreset=100;
 
-	int channel=0;
+	int channel=pThis->m_Device_Id_Channel;
 	char tMsg[15];
 
 	tMsg[0]=0xF0;
@@ -117,12 +117,17 @@ void CDemoDlg::YamahaSPXSysex(LPSTR Msg, DWORD BytesRecorded, DWORD TimeStamp)
 {
 	midi::CLongMsg	LongMsg(Msg,BytesRecorded);
 	int NameOffset=16;
-	char PgmName[17];
+	char unsigned PgmName[17];
 	int count=0;
+	byte test=0;
 
 	for(int byte=0; byte < (2*16) ; byte+=2)
 	{
 		PgmName[count]=(Msg[byte+NameOffset]<<4)+Msg[byte+NameOffset+1];
+		if ( PgmName[count] > 0x7F )
+		{
+			PgmName[count]=' ';
+		}
 		count++;
 	}	
 	PgmName[count]=0x00;

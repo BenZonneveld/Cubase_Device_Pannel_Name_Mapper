@@ -525,6 +525,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\DeviceIds.h"
+				>
+			</File>
+			<File
 				RelativePath="LongMsg.h"
 				>
 			</File>

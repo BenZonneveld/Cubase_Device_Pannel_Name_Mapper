@@ -14,15 +14,9 @@
 #include "LongMsg.h"
 #include "ShortMsg.h"
 #include "midi.h"
+#include "DeviceIds.h"
 
 #define MAXBAR					200
-#define DIGITECH_ID			0
-#define SPX_ID					1
-#define DPPRO_ID				2
-#define MWXT_ID					3
-#define DX7_ID					4
-#define WAVESTATION_ID	5
-#define PROTEUS_ID			6
 
 /////////////////////////////////////////////////////////////////////////////
 // CDemoDlg dialog
@@ -141,6 +135,7 @@ private:
 	void OnPrefMididevices(int DevId);
 
 	unsigned char m_dx_bank;
+	UINT m_Device_Id_Channel;
 	HANDLE ghWriteEvent;
 	bool m_Abort;
 	HACCEL m_hAccelTable;
