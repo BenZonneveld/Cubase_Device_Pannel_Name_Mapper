@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9cdfd250-8ba2-4d12-8adf-12a36bcafc3b}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Devices">
+      <UniqueIdentifier>{22fa772a-d933-49da-8d0c-9b2a43534395}</UniqueIdentifier>
+      <Extensions>Device_</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Midi Wrapper">
+      <UniqueIdentifier>{4ffc13f5-75fe-443b-a25b-0e0d7cac9a3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{b1debd2c-7203-493a-a4b7-578297825c93}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{e9c1a5f5-5567-4665-bed0-3fad60de31a8}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Xml Device Templates">
+      <UniqueIdentifier>{91c6a201-c6bb-4cec-a27a-20493b048e68}</UniqueIdentifier>
+      <Extensions>xml</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Cubase Device Panel Mapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MIDIDevsDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\Device_DigitechStudioQuadV2.cpp">
+      <Filter>Source Files\Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\Device_DX7.cpp">
+      <Filter>Source Files\Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\Device_EnsoniqDPPro.cpp">
+      <Filter>Source Files\Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\Device_MicrowaveXT.cpp">
+      <Filter>Source Files\Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\Device_Proteus.cpp">
+      <Filter>Source Files\Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\Device_WaveStation.cpp">
+      <Filter>Source Files\Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\Device_YamahaSPX.cpp">
+      <Filter>Source Files\Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="LongMsg.cpp">
+      <Filter>Source Files\Midi Wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="MIDIInDevice.cpp">
+      <Filter>Source Files\Midi Wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="MIDIOutDevice.cpp">
+      <Filter>Source Files\Midi Wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="ShortMsg.cpp">
+      <Filter>Source Files\Midi Wrapper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Cubase Device Panel Mapper.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cubase Device Panel Mapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\Device_DPPro_Factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\Device_Quad_Factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\Device_Wavestation_SysexStructs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceIds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LongMsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="midi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MIDIDevsDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MIDIInDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MIDIMsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MIDIOutDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortMsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Cubase Device Panel Mapper.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Cubase Device Panel Mapper.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="res\DPPro Template.xml">
+      <Filter>Xml Device Templates</Filter>
+    </Xml>
+    <Xml Include="res\DX7 Template.xml">
+      <Filter>Xml Device Templates</Filter>
+    </Xml>
+    <Xml Include="res\MicrowaveXT Template.xml">
+      <Filter>Xml Device Templates</Filter>
+    </Xml>
+    <Xml Include="res\Proteus Template.xml">
+      <Filter>Xml Device Templates</Filter>
+    </Xml>
+    <Xml Include="res\SPX990 Template.xml">
+      <Filter>Xml Device Templates</Filter>
+    </Xml>
+    <Xml Include="res\StudioQuad Template.xml">
+      <Filter>Xml Device Templates</Filter>
+    </Xml>
+    <Xml Include="res\Wavestation Template.xml">
+      <Filter>Xml Device Templates</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>
