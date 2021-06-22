@@ -21,8 +21,8 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Convert Project
-      run: VCUpgrade.exe "Cubase Device Panel Mapper.sln"
+#    - name: Convert Project
+#      run: VCUpgrade.exe "Cubase Device Panel Mapper.sln"
       
     - name: Restore NuGet packages
       working-directory: ${{env.GITHUB_WORKSPACE}}
